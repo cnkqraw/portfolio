@@ -1,0 +1,26 @@
+<svg width="960" height="1200" viewBox="0 0 960 1200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="960" y2="1200" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#18213A"/>
+      <stop offset="1" stop-color="#0B1020"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(720 230) rotate(131) scale(500 470)">
+      <stop stop-color="#FF4D5F" stop-opacity="0.36"/>
+      <stop offset="1" stop-color="#FF4D5F" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="figure" x1="480" y1="210" x2="480" y2="1030" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#3B4867"/>
+      <stop offset="1" stop-color="#151D32"/>
+    </linearGradient>
+  </defs>
+  <rect width="960" height="1200" rx="48" fill="url(#bg)"/>
+  <rect width="960" height="1200" rx="48" fill="url(#glow)"/>
+  <g opacity="0.35">
+    <path d="M0 180H960M0 360H960M0 540H960M0 720H960M0 900H960M0 1080H960" stroke="white" stroke-opacity="0.08"/>
+    <path d="M160 0V1200M320 0V1200M480 0V1200M640 0V1200M800 0V1200" stroke="white" stroke-opacity="0.08"/>
+  </g>
+  <circle cx="480" cy="430" r="155" fill="url(#figure)" stroke="white" stroke-opacity="0.08" stroke-width="3"/>
+  <path d="M175 1090C193 810 312 670 480 670C648 670 767 810 785 1090H175Z" fill="url(#figure)" stroke="white" stroke-opacity="0.08" stroke-width="3"/>
+  <circle cx="480" cy="600" r="300" stroke="#FF4D5F" stroke-opacity="0.28" stroke-width="2" stroke-dasharray="10 16"/>
+  <text x="480" y="1110" text-anchor="middle" fill="#A4AEC2" font-family="Arial, sans-serif" font-size="28" letter-spacing="4">PORTRAIT PLACEHOLDER</text>
+</svg>
