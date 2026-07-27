@@ -1,33 +1,23 @@
 # Muhammad Mustaqim Chowdhury Portfolio
 
-A responsive static portfolio focused on Python, Rust, Linux, automation, and self-hosted infrastructure.
+A responsive personal portfolio for Muhammad Mustaqim Chowdhury.
 
-## Files
+## Replace the portrait
 
-- `index.html` contains the page structure and SEO metadata.
-- `styles.css` contains the visual system and responsive layouts.
-- `script.js` contains mobile navigation, reveal animations, and pointer effects.
-- `favicon.svg` contains the site icon.
+Replace `assets/portrait-placeholder.svg` with a real portrait while keeping the same file name, or update both image paths in `index.html`.
 
-## Local preview
+Recommended image:
 
-Open `index.html` in a browser, or run a local static server:
-
-```bash
-python -m http.server 8000
-```
-
-Then open `http://localhost:8000`.
+- Portrait orientation
+- 4:5 aspect ratio
+- At least 1200 × 1500 pixels
+- Clear background and natural lighting
 
 ## Cloudflare Pages
-
-Use these settings:
 
 - Framework preset: None
 - Build command: Leave empty
 - Build output directory: `/`
-- Production branch: `main` after merging `portfolio-v1`
+- Production branch: `main`
 
-## Current development branch
-
-`portfolio-v1`
+The Google Search Console verification meta tag is in `index.html` and must not be removed.
