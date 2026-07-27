@@ -5,15 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Muhammad Mustaqim Chowdhury is a Bangladeshi student developer based in Qatar, focused on Python, Rust, Linux, automation, and self-hosted systems.">
   <meta name="author" content="Muhammad Mustaqim Chowdhury">
-  <meta name="theme-color" content="#0f172a">
+  <meta name="theme-color" content="#0b1020">
   <meta name="robots" content="index, follow">
+  <meta name="google-site-verification" content="JsJDC_ne71SxoiLSizZshSsgOW-G2NltgGm5O4AW0zQ" />
   <link rel="canonical" href="https://mustaqim-portfolio.pages.dev/">
 
   <meta property="og:type" content="profile">
   <meta property="og:url" content="https://mustaqim-portfolio.pages.dev/">
   <meta property="og:title" content="Muhammad Mustaqim Chowdhury | Student Developer">
   <meta property="og:description" content="Python, Rust, Linux, automation, and self-hosted systems.">
-  <meta property="og:site_name" content="Mustaqim Portfolio">
+  <meta property="og:site_name" content="Muhammad Mustaqim Chowdhury">
 
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Muhammad Mustaqim Chowdhury | Student Developer">
@@ -24,7 +25,7 @@
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
   <link rel="stylesheet" href="styles.css">
 
@@ -46,304 +47,350 @@
 <body>
   <a class="skip-link" href="#main-content">Skip to content</a>
 
-  <canvas id="particle-canvas" aria-hidden="true"></canvas>
-  <div class="page-overlay" aria-hidden="true"></div>
-  <div class="floating-blob blob-one" aria-hidden="true"></div>
-  <div class="floating-blob blob-two" aria-hidden="true"></div>
-
-  <div class="cursor-dot" aria-hidden="true"></div>
-  <div class="cursor-outline" aria-hidden="true"></div>
+  <div class="background-orb orb-one" aria-hidden="true"></div>
+  <div class="background-orb orb-two" aria-hidden="true"></div>
+  <div class="background-grid" aria-hidden="true"></div>
 
   <header class="site-header" id="site-header">
-    <a class="nav-logo" href="#home" aria-label="Mustaqim home">Mustaqim<span>.</span></a>
+    <nav class="nav-shell" aria-label="Main navigation">
+      <a class="brand" href="#home" aria-label="Go to home">
+        <span class="brand-mark">M</span>
+        <span class="brand-text">
+          <strong>Mustaqim</strong>
+          <small>Student Developer</small>
+        </span>
+      </a>
 
-    <nav class="desktop-nav" aria-label="Main navigation">
-      <a class="nav-link active" href="#about">About</a>
-      <a class="nav-link" href="#journey">Journey</a>
-      <a class="nav-link" href="#projects">Projects</a>
-      <a class="nav-link" href="#achievements">Achievements</a>
-      <a class="nav-link" href="#contact">Contact</a>
-      <span class="nav-marker" aria-hidden="true"></span>
-    </nav>
-
-    <div class="nav-controls">
-      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle theme">
-        <i class="fa-solid fa-moon"></i>
-      </button>
-      <button class="menu-button" id="menu-button" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-    </div>
-  </header>
-
-  <div class="mobile-menu" id="mobile-menu" hidden>
-    <nav aria-label="Mobile navigation">
-      <a href="#about"><span>01</span>About</a>
-      <a href="#journey"><span>02</span>Journey</a>
-      <a href="#projects"><span>03</span>Projects</a>
-      <a href="#achievements"><span>04</span>Achievements</a>
-      <a href="#contact"><span>05</span>Contact</a>
-    </nav>
-  </div>
-
-  <main id="main-content">
-    <section class="hero" id="home">
-      <div class="hero-content">
-        <span class="hero-badge reveal">Interactive Portfolio</span>
-        <h1 class="reveal">Building Ideas Into<br>Working Systems</h1>
-        <div class="typewriter-wrap reveal">
-          <span>I am a </span><span class="typewriter" id="typewriter"></span>
-        </div>
-        <p class="hero-intro reveal">
-          Muhammad Mustaqim Chowdhury, a Bangladeshi student developer based in Qatar, building with Python, Rust, Linux, automation, and cloud tools.
-        </p>
-        <div class="hero-actions reveal">
-          <a class="button button-primary" href="#projects">View Projects</a>
-          <a class="button button-glass" href="https://github.com/cnkqraw" target="_blank" rel="noopener noreferrer">
-            GitHub <i class="fa-solid fa-arrow-up-right-from-square"></i>
-          </a>
-        </div>
+      <div class="desktop-links">
+        <a href="#about">About</a>
+        <a href="#journey">Journey</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
       </div>
 
-      <a class="scroll-indicator" href="#about" aria-label="Scroll to about section">
-        <span></span>
-      </a>
+      <div class="nav-actions">
+        <button class="theme-button" id="theme-button" type="button" aria-label="Toggle dark mode">
+          <i class="fa-solid fa-moon"></i>
+        </button>
+        <a class="github-button" href="https://github.com/cnkqraw" target="_blank" rel="noopener noreferrer">
+          GitHub <i class="fa-solid fa-arrow-up-right-from-square"></i>
+        </a>
+        <button class="menu-button" id="menu-button" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-drawer">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <aside class="mobile-drawer" id="mobile-drawer" hidden>
+    <div class="drawer-panel">
+      <div class="drawer-header">
+        <span>Navigation</span>
+        <button id="drawer-close" type="button" aria-label="Close menu"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <nav aria-label="Mobile navigation">
+        <a href="#about"><span>01</span>About</a>
+        <a href="#journey"><span>02</span>Journey</a>
+        <a href="#projects"><span>03</span>Projects</a>
+        <a href="#skills"><span>04</span>Skills</a>
+        <a href="#contact"><span>05</span>Contact</a>
+      </nav>
+    </div>
+  </aside>
+
+  <main id="main-content">
+    <section class="hero section" id="home">
+      <div class="hero-grid">
+        <div class="hero-copy reveal">
+          <div class="hero-status">
+            <span class="status-dot"></span>
+            Building and learning in Qatar
+          </div>
+
+          <p class="hero-name">Muhammad Mustaqim Chowdhury</p>
+          <h1>Student developer building useful software and reliable systems.</h1>
+          <p class="hero-intro">
+            I work with Python, Rust, Linux, automation, and cloud tools. I enjoy taking ideas from the first line of code to a working deployment.
+          </p>
+
+          <div class="hero-actions">
+            <a class="button primary-button" href="#projects">View my work <i class="fa-solid fa-arrow-down"></i></a>
+            <a class="button secondary-button" href="https://github.com/cnkqraw" target="_blank" rel="noopener noreferrer">Open GitHub <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+          </div>
+
+          <div class="hero-meta">
+            <div>
+              <strong>Bangladesh</strong>
+              <span>Identity</span>
+            </div>
+            <div>
+              <strong>Newton British Academy</strong>
+              <span>Education</span>
+            </div>
+            <div>
+              <strong>Python + Rust</strong>
+              <span>Development focus</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-card reveal">
+          <div class="profile-card">
+            <div class="profile-image-wrap">
+              <img src="https://avatars.githubusercontent.com/u/102687649?v=4" alt="Mustaqim's profile picture">
+              <span class="profile-ring"></span>
+            </div>
+
+            <div class="profile-copy">
+              <span class="profile-label">PROFILE</span>
+              <h2>Mustaqim</h2>
+              <p>Student developer focused on software, systems, and automation.</p>
+            </div>
+
+            <div class="profile-stack">
+              <span><i class="fa-brands fa-python"></i>Python</span>
+              <span><i class="fa-solid fa-code"></i>Rust</span>
+              <span><i class="fa-brands fa-linux"></i>Linux</span>
+              <span><i class="fa-solid fa-gears"></i>Automation</span>
+            </div>
+
+            <div class="profile-footer">
+              <div class="bangladesh-flag" role="img" aria-label="Bangladesh flag"><span></span></div>
+              <p>Bangladeshi, based in Doha</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <section class="section" id="about">
-      <div class="section-header reveal">
-        <span class="section-tag">Who I Am</span>
-        <h2>Muhammad Mustaqim Chowdhury.</h2>
+      <div class="section-heading reveal">
+        <span>01 / About</span>
+        <h2>A student who likes the complete process.</h2>
+        <p>I write the code, connect the services, deploy the project, and keep improving it after it works.</p>
       </div>
 
-      <div class="about-grid">
-        <div class="about-visual reveal">
-          <div class="portrait-frame">
-            <img src="https://avatars.githubusercontent.com/u/102687649?v=4" alt="Mustaqim's GitHub profile picture">
-          </div>
-          <div class="floating-stat stat-one"><strong>2nd</strong><span>Competition place</span></div>
-          <div class="floating-stat stat-two"><strong>8C/16T</strong><span>Home server</span></div>
-          <div class="flag-chip" aria-label="Bangladesh">
-            <span class="flag-icon"><i></i></span>
-            Bangladesh
-          </div>
-        </div>
-
-        <article class="glass-card about-card reveal">
-          <p class="about-lead">I like building the full thing, not only writing the first script.</p>
-          <p>
-            I am a Year 10 student at Newton British Academy Barwa City. My work combines software, automation, deployment, networking, and self-hosted infrastructure.
+      <div class="about-layout">
+        <article class="about-main card reveal">
+          <p class="large-copy">
+            I am a Year 10 student at Newton British Academy Barwa City. I build web tools, automation workflows, bots, and self-hosted services.
           </p>
           <p>
-            Python is my strongest language. I am learning Rust to improve how I think about ownership, performance, and reliable software design.
+            Python is my strongest language. I am learning Rust to improve my understanding of ownership, performance, and software design. I also work with Docker, Cloudflare, n8n, Playwright, FastAPI, and Linux servers.
           </p>
           <p>
-            Outside programming, I enjoy physics, technology, gaming, and turning school ideas into projects people can use.
+            My goal is simple: build real projects, document the work properly, and keep getting better at software engineering.
           </p>
-
-          <div class="skill-list" aria-label="Skills">
-            <span>Python</span>
-            <span>Rust</span>
-            <span>Linux</span>
-            <span>Docker</span>
-            <span>n8n</span>
-            <span>Cloudflare</span>
-            <span>Playwright</span>
-            <span>FastAPI</span>
-          </div>
         </article>
+
+        <div class="about-facts">
+          <article class="fact-card card reveal">
+            <span>Current focus</span>
+            <strong>Rust and public projects</strong>
+            <p>Building stronger software and publishing more complete work.</p>
+          </article>
+          <article class="fact-card card reveal">
+            <span>Best result</span>
+            <strong>2nd place</strong>
+            <p>Inter-Newton competition with The Newton Saga.</p>
+          </article>
+          <article class="fact-card card reveal">
+            <span>Infrastructure</span>
+            <strong>Self-hosted server</strong>
+            <p>Ubuntu, Docker, n8n, Redis, monitoring, and remote access.</p>
+          </article>
+        </div>
       </div>
     </section>
 
     <section class="section" id="journey">
-      <div class="section-header centered reveal">
-        <span class="section-tag">My Journey</span>
-        <h2>Learning By Building</h2>
+      <div class="section-heading reveal">
+        <span>02 / Journey</span>
+        <h2>Learning through projects.</h2>
+        <p>Each stage added a new part of the process, from writing scripts to running complete systems.</p>
       </div>
 
-      <div class="timeline" id="timeline">
-        <div class="timeline-line"><span id="timeline-progress"></span></div>
-
-        <article class="timeline-item reveal">
-          <div class="timeline-dot"></div>
-          <div class="glass-card timeline-card">
-            <span class="timeline-year">2025</span>
-            <h3>From Python scripts to complete projects</h3>
-            <p>Started combining code, APIs, interfaces, automation, and deployment instead of treating each part separately.</p>
+      <div class="journey-list">
+        <article class="journey-item reveal">
+          <div class="journey-year">2025</div>
+          <div class="journey-line"><span></span></div>
+          <div class="journey-content card">
+            <span>Foundation</span>
+            <h3>Started building beyond school exercises</h3>
+            <p>Moved from standalone Python tasks into websites, bots, APIs, and automation.</p>
           </div>
         </article>
 
-        <article class="timeline-item reveal">
-          <div class="timeline-dot"></div>
-          <div class="glass-card timeline-card">
-            <span class="timeline-year">2026</span>
-            <h3>Built a self-hosted development lab</h3>
-            <p>Set up Ubuntu Server, Docker, n8n, Redis, Tailscale, AI services, monitoring, and web tools on my own hardware.</p>
+        <article class="journey-item reveal">
+          <div class="journey-year">2026</div>
+          <div class="journey-line"><span></span></div>
+          <div class="journey-content card">
+            <span>Infrastructure</span>
+            <h3>Built a home server environment</h3>
+            <p>Set up Ubuntu Server, Docker, Tailscale, n8n, Redis, monitoring, and AI services.</p>
           </div>
         </article>
 
-        <article class="timeline-item reveal">
-          <div class="timeline-dot"></div>
-          <div class="glass-card timeline-card">
-            <span class="timeline-year">2026</span>
+        <article class="journey-item reveal">
+          <div class="journey-year">2026</div>
+          <div class="journey-line"><span></span></div>
+          <div class="journey-content card">
+            <span>Competition</span>
             <h3>Placed second in an Inter-Newton competition</h3>
-            <p>Built The Newton Saga with a teammate and finished only 0.5% behind first place.</p>
+            <p>Built The Newton Saga with a teammate and finished 0.5% behind first place.</p>
           </div>
         </article>
 
-        <article class="timeline-item reveal">
-          <div class="timeline-dot"></div>
-          <div class="glass-card timeline-card">
-            <span class="timeline-year">Now</span>
-            <h3>Learning Rust and improving public work</h3>
-            <p>Focused on stronger engineering, useful privacy tools, open repositories, and projects that stay online.</p>
+        <article class="journey-item reveal">
+          <div class="journey-year">Now</div>
+          <div class="journey-line"><span></span></div>
+          <div class="journey-content card">
+            <span>Next step</span>
+            <h3>Learning Rust and publishing better work</h3>
+            <p>Focused on stronger engineering, privacy tools, open repositories, and cleaner project documentation.</p>
           </div>
         </article>
       </div>
     </section>
 
     <section class="section" id="projects">
-      <div class="section-header reveal">
-        <span class="section-tag">Selected Work</span>
-        <h2>Featured Projects</h2>
+      <div class="section-heading reveal">
+        <span>03 / Projects</span>
+        <h2>Selected work.</h2>
+        <p>Projects that represent privacy, competition, infrastructure, and AI automation.</p>
       </div>
 
       <div class="projects-grid">
-        <a class="project-link reveal" href="https://github.com/cnkqraw/meta-strip" target="_blank" rel="noopener noreferrer">
-          <article class="project-card tilt-card">
-            <div class="project-visual meta-project">
-              <div class="file-stack" aria-hidden="true">
-                <span class="file file-a">JPG</span>
-                <span class="file file-b">PDF</span>
-                <span class="file file-c">MP4</span>
-              </div>
-              <div class="scan-card" aria-hidden="true">
-                <strong>Privacy score</strong>
-                <span>92</span>
-                <i></i>
-              </div>
-              <div class="project-overlay"><span>View Project ↗</span></div>
+        <article class="project-card project-featured card reveal">
+          <div class="project-visual meta-visual">
+            <div class="meta-files" aria-hidden="true">
+              <span class="meta-file meta-a">JPG</span>
+              <span class="meta-file meta-b">PDF</span>
+              <span class="meta-file meta-c">MP4</span>
             </div>
-            <div class="project-content">
-              <h3>MetaStrip</h3>
-              <p>A cloud metadata inspector and cleaner for images, video, audio, PDFs, and Office files.</p>
-              <div class="tech-tags"><span>Node.js</span><span>Express</span><span>Privacy</span></div>
+            <div class="privacy-panel" aria-hidden="true">
+              <span>Privacy score</span>
+              <strong>92</strong>
+              <i></i>
+              <small>Metadata removed and verified</small>
             </div>
-          </article>
-        </a>
+          </div>
+          <div class="project-copy">
+            <div class="project-topline"><span>PUBLIC PROJECT</span><span>01</span></div>
+            <h3>MetaStrip</h3>
+            <p>A cloud metadata inspector and cleaner for images, video, audio, PDFs, and Microsoft Office files.</p>
+            <div class="project-tags"><span>Node.js</span><span>Express</span><span>Privacy</span></div>
+            <a href="https://github.com/cnkqraw/meta-strip" target="_blank" rel="noopener noreferrer">View source <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+          </div>
+        </article>
 
-        <a class="project-link reveal" href="https://newton-competition.pages.dev" target="_blank" rel="noopener noreferrer">
-          <article class="project-card tilt-card">
-            <div class="project-visual saga-project">
-              <div class="saga-title" aria-hidden="true">
-                <small>THE</small>
-                <strong>NEWTON SAGA</strong>
-                <span>Interactive History</span>
-              </div>
-              <div class="project-overlay"><span>Open Live Site ↗</span></div>
+        <article class="project-card card reveal">
+          <div class="project-visual saga-visual">
+            <div class="saga-copy" aria-hidden="true">
+              <span>THE</span>
+              <strong>NEWTON SAGA</strong>
+              <small>Interactive History</small>
             </div>
-            <div class="project-content">
-              <h3>The Newton Saga</h3>
-              <p>An interactive history experience built for a Newton Group competition with a public project website.</p>
-              <div class="tech-tags"><span>Defold</span><span>Lua</span><span>Cloudflare</span></div>
+          </div>
+          <div class="project-copy">
+            <div class="project-topline"><span>COMPETITION</span><span>02</span></div>
+            <h3>The Newton Saga</h3>
+            <p>An interactive history experience built for a Newton Group competition with a public showcase website.</p>
+            <div class="project-tags"><span>Defold</span><span>Lua</span><span>Cloudflare</span></div>
+            <div class="project-links">
+              <a href="https://newton-competition.pages.dev" target="_blank" rel="noopener noreferrer">Live site <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+              <a href="https://github.com/cnkqraw/newton-competition" target="_blank" rel="noopener noreferrer">Source <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
             </div>
-          </article>
-        </a>
+          </div>
+        </article>
 
-        <article class="project-card tilt-card reveal">
-          <div class="project-visual server-project">
-            <div class="server-rack" aria-hidden="true">
+        <article class="project-card card reveal">
+          <div class="project-visual server-visual">
+            <div class="server-stack" aria-hidden="true">
               <span><b>n8n</b><i></i></span>
               <span><b>Redis</b><i></i></span>
               <span><b>Docker</b><i></i></span>
               <span><b>Web Services</b><i></i></span>
             </div>
-            <div class="project-overlay always-muted"><span>Private Infrastructure</span></div>
           </div>
-          <div class="project-content">
-            <h3>Root Systems</h3>
-            <p>My Ubuntu home lab for automation, AI services, rendering, monitoring, and remote access.</p>
-            <div class="tech-tags"><span>Ubuntu</span><span>Docker</span><span>n8n</span><span>Tailscale</span></div>
+          <div class="project-copy">
+            <div class="project-topline"><span>INFRASTRUCTURE</span><span>03</span></div>
+            <h3>Home Server</h3>
+            <p>An Ubuntu server running containerized automation, AI, rendering, monitoring, and remote-access services.</p>
+            <div class="project-tags"><span>Ubuntu</span><span>Docker</span><span>n8n</span><span>Tailscale</span></div>
+            <span class="project-note">Private infrastructure</span>
           </div>
         </article>
 
-        <article class="project-card tilt-card reveal">
-          <div class="project-visual quantum-project">
-            <div class="quantum-orbit orbit-one"></div>
-            <div class="quantum-orbit orbit-two"></div>
+        <article class="project-card card reveal">
+          <div class="project-visual quantum-visual">
+            <div class="quantum-ring ring-one"></div>
+            <div class="quantum-ring ring-two"></div>
             <div class="quantum-core">Q</div>
-            <div class="chat-bubble bubble-one"><span>@Mustaqim</span> explain ownership</div>
-            <div class="chat-bubble bubble-two"><span>QuantumGPT</span> borrowing lets...</div>
-            <div class="project-overlay always-muted"><span>Private Service</span></div>
+            <div class="chat-card chat-one"><span>@Mustaqim</span> explain ownership</div>
+            <div class="chat-card chat-two"><span>QuantumGPT</span> borrowing lets...</div>
           </div>
-          <div class="project-content">
+          <div class="project-copy">
+            <div class="project-topline"><span>AI AUTOMATION</span><span>04</span></div>
             <h3>QuantumGPT</h3>
             <p>A mention-activated Discord assistant connected to hosted AI models and deployed as a persistent service.</p>
-            <div class="tech-tags"><span>Python</span><span>Discord.py</span><span>LLM APIs</span></div>
+            <div class="project-tags"><span>Python</span><span>Discord.py</span><span>LLM APIs</span></div>
+            <span class="project-note">Private service</span>
           </div>
         </article>
       </div>
     </section>
 
-    <section class="section" id="achievements">
-      <div class="section-header reveal">
-        <span class="section-tag">Progress & Proof</span>
-        <h2>Achievements</h2>
+    <section class="section" id="skills">
+      <div class="section-heading reveal">
+        <span>04 / Skills</span>
+        <h2>Tools I work with.</h2>
+        <p>A practical stack for software, automation, deployment, and infrastructure.</p>
       </div>
 
-      <div class="achievement-grid">
-        <article class="achievement-card glass-card reveal">
-          <div class="achievement-icon"><i class="fa-solid fa-trophy"></i></div>
-          <span>2026</span>
-          <h3>Inter-Newton Competition Runner-up</h3>
-          <p>Placed second with The Newton Saga, finishing 0.5% behind first place.</p>
+      <div class="skills-grid">
+        <article class="skill-card card reveal">
+          <i class="fa-solid fa-code"></i>
+          <h3>Development</h3>
+          <div><span>Python</span><span>Rust</span><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
         </article>
-
-        <article class="achievement-card glass-card reveal">
-          <div class="achievement-icon"><i class="fa-solid fa-server"></i></div>
-          <span>Infrastructure</span>
-          <h3>Built a Self-hosted Lab</h3>
-          <p>Runs automation, AI, monitoring, media rendering, and web services on Ubuntu Server.</p>
+        <article class="skill-card card reveal">
+          <i class="fa-solid fa-server"></i>
+          <h3>Infrastructure</h3>
+          <div><span>Linux</span><span>Docker</span><span>Tailscale</span><span>Redis</span><span>Cloudflare</span></div>
         </article>
-
-        <article class="achievement-card glass-card reveal">
-          <div class="achievement-icon"><i class="fa-solid fa-code"></i></div>
-          <span>Development</span>
-          <h3>Python to Rust</h3>
-          <p>Advanced from IGCSE Python projects into Rust ownership, borrowing, structs, and systems concepts.</p>
+        <article class="skill-card card reveal">
+          <i class="fa-solid fa-gears"></i>
+          <h3>Automation</h3>
+          <div><span>n8n</span><span>Playwright</span><span>FastAPI</span><span>FFmpeg</span><span>APIs</span></div>
         </article>
       </div>
     </section>
 
     <section class="section" id="contact">
-      <div class="section-header centered reveal">
-        <span class="section-tag">Get In Touch</span>
-        <h2>Follow What I Build</h2>
-      </div>
-
-      <div class="contact-card glass-card reveal">
-        <div class="contact-glow" aria-hidden="true"></div>
+      <div class="contact-card card reveal">
         <div>
-          <h3>My public work lives on GitHub.</h3>
-          <p>Repositories, experiments, project updates, and the source code behind this portfolio.</p>
+          <span>05 / Contact</span>
+          <h2>See what I build next.</h2>
+          <p>My public repositories hold my projects, experiments, and source code.</p>
         </div>
-        <a class="button button-primary" href="https://github.com/cnkqraw" target="_blank" rel="noopener noreferrer">
-          Visit GitHub <i class="fa-solid fa-arrow-up-right-from-square"></i>
-        </a>
+        <a class="button primary-button" href="https://github.com/cnkqraw" target="_blank" rel="noopener noreferrer">Visit GitHub <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
       </div>
     </section>
   </main>
 
   <footer class="site-footer">
-    <div class="footer-socials">
-      <a href="https://github.com/cnkqraw" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+    <div>
+      <strong>Muhammad Mustaqim Chowdhury</strong>
+      <p>Student developer from Bangladesh, based in Qatar.</p>
     </div>
-    <p>© <span id="current-year">2026</span> Muhammad Mustaqim Chowdhury</p>
+    <div>
+      <a href="https://github.com/cnkqraw" target="_blank" rel="noopener noreferrer">GitHub <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+      <span>© <span id="current-year">2026</span></span>
+    </div>
   </footer>
 
-  <div class="toast" id="toast" role="status" aria-live="polite">Theme updated</div>
   <script src="script.js" defer></script>
 </body>
 </html>
