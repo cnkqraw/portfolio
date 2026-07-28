@@ -806,132 +806,53 @@
         opacity: 0.55;
     }
 
-    .profile-code-card {
+    .profile-photo-card {
         position: relative;
+        width: min(100%, 480px);
+        aspect-ratio: 4 / 5;
+        margin-left: auto;
         overflow: hidden;
         border: 1px solid var(--border-strong);
         border-radius: var(--radius-lg);
-        background:
-            linear-gradient(
-                145deg,
-                rgba(255, 255, 255, 0.055),
-                rgba(255, 255, 255, 0.018)
-            ),
-            var(--bg-soft);
+        background: var(--bg-soft);
         box-shadow:
             var(--shadow-md),
-            0 25px 90px rgba(239, 68, 68, 0.09);
+            0 25px 90px rgba(239, 68, 68, 0.1);
         transform: rotate(1deg);
         transition:
             transform var(--transition-slow),
             border-color var(--transition-slow),
             box-shadow var(--transition-slow);
     }
-
-    .profile-code-card:hover {
+    
+    .profile-photo-card::after {
+        position: absolute;
+        inset: 0;
+        content: "";
+        pointer-events: none;
+        background:
+            linear-gradient(
+                to top,
+                rgba(7, 7, 7, 0.3),
+                transparent 42%
+            );
+    }
+    
+    .profile-photo-card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center 20%;
+    }
+    
+    .profile-photo-card:hover {
         border-color: var(--border-accent);
         box-shadow:
             var(--shadow-md),
-            0 30px 100px rgba(239, 68, 68, 0.14);
+            0 30px 100px rgba(239, 68, 68, 0.15);
         transform: rotate(0deg) translateY(-4px);
     }
-
-    .profile-code-card::before {
-        position: absolute;
-        top: -80px;
-        right: -100px;
-        width: 280px;
-        height: 280px;
-        border-radius: 50%;
-        content: "";
-        background: rgba(239, 68, 68, 0.1);
-        filter: blur(50px);
-    }
-
-    .code-card-header {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 15px 18px;
-        border-bottom: 1px solid var(--border);
-        background: rgba(255, 255, 255, 0.018);
-    }
-
-    .window-controls {
-        display: flex;
-        gap: 7px;
-    }
-
-    .window-control {
-        width: 9px;
-        height: 9px;
-        border-radius: 50%;
-        background: var(--text-dim);
-    }
-
-    .window-control:first-child {
-        background: var(--accent);
-    }
-
-    .window-control:nth-child(2) {
-        background: rgba(248, 113, 113, 0.55);
-    }
-
-    .window-control:nth-child(3) {
-        background: rgba(255, 255, 255, 0.2);
-    }
-
-    .code-card-filename {
-        color: var(--text-dim);
-        font-family:
-            "Cascadia Code",
-            "SFMono-Regular",
-            Consolas,
-            monospace;
-        font-size: 0.74rem;
-    }
-
-    .code-content {
-        position: relative;
-        padding: 29px 27px 32px;
-        overflow-x: auto;
-        color: #d4d4d8;
-        font-family:
-            "Cascadia Code",
-            "SFMono-Regular",
-            Consolas,
-            monospace;
-        font-size: clamp(0.77rem, 1.5vw, 0.89rem);
-        line-height: 1.9;
-    }
-
-    .code-line {
-        display: block;
-        white-space: nowrap;
-    }
-
-    .code-muted {
-        color: #52525b;
-    }
-
-    .code-keyword,
-    .code-property {
-        color: var(--accent-3);
-    }
-
-    .code-string {
-        color: #e4e4e7;
-    }
-
-    .code-bracket,
-    .code-operator {
-        color: #a1a1aa;
-    }
-
-    .code-boolean {
-        color: var(--accent);
-    }
-
+    
     .skills-section {
         margin-top: 100px;
     }
@@ -2134,93 +2055,15 @@
                     </div>
                 </div>
 
-                <div class="hero-card-wrap reveal">
-                    <div class="profile-code-card" aria-label="Developer profile code card">
-                        <div class="code-card-header">
-                            <div class="window-controls" aria-hidden="true">
-                                <span class="window-control"></span>
-                                <span class="window-control"></span>
-                                <span class="window-control"></span>
-                            </div>
-
-                            <span class="code-card-filename">mustaqim.profile</span>
-                        </div>
-
-                        <div class="code-content" aria-hidden="true">
-                            <span class="code-line">
-                                <span class="code-keyword">const</span>
-                                <span class="code-string"> developer</span>
-                                <span class="code-operator"> = </span>
-                                <span class="code-bracket">{</span>
-                            </span>
-
-                            <span class="code-line">
-                                &nbsp;&nbsp;<span class="code-property">name</span><span class="code-operator">:</span>
-                                <span class="code-string">"Mustaqim"</span><span class="code-operator">,</span>
-                            </span>
-
-                            <span class="code-line">
-                                &nbsp;&nbsp;<span class="code-property">location</span><span class="code-operator">:</span>
-                                <span class="code-string">"Qatar"</span><span class="code-operator">,</span>
-                            </span>
-
-                            <span class="code-line">
-                                &nbsp;&nbsp;<span class="code-property">roots</span><span class="code-operator">:</span>
-                                <span class="code-string">"Bangladesh"</span><span class="code-operator">,</span>
-                            </span>
-
-                            <span class="code-line">
-                                &nbsp;&nbsp;<span class="code-property">languages</span><span class="code-operator">:</span>
-                                <span class="code-bracket">[</span>
-                            </span>
-
-                            <span class="code-line">
-                                &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-string">"Python"</span><span class="code-operator">,</span>
-                                <span class="code-string">"Rust"</span>
-                            </span>
-
-                            <span class="code-line">
-                                &nbsp;&nbsp;<span class="code-bracket">]</span><span class="code-operator">,</span>
-                            </span>
-
-                            <span class="code-line">
-                                &nbsp;&nbsp;<span class="code-property">focus</span><span class="code-operator">:</span>
-                                <span class="code-bracket">[</span>
-                            </span>
-
-                            <span class="code-line">
-                                &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-string">"Automation"</span><span class="code-operator">,</span>
-                            </span>
-
-                            <span class="code-line">
-                                &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-string">"AI"</span><span class="code-operator">,</span>
-                            </span>
-
-                            <span class="code-line">
-                                &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-string">"Infrastructure"</span>
-                            </span>
-
-                            <span class="code-line">
-                                &nbsp;&nbsp;<span class="code-bracket">]</span><span class="code-operator">,</span>
-                            </span>
-
-                            <span class="code-line">
-                                &nbsp;&nbsp;<span class="code-property">building</span><span class="code-operator">:</span>
-                                <span class="code-boolean">true</span>
-                            </span>
-
-                            <span class="code-line">
-                                <span class="code-bracket">}</span><span class="code-operator">;</span>
-                            </span>
-
-                            <span class="code-line code-muted">
-                                // Test. Learn. Improve.
-                            </span>
-                        </div>
-                    </div>
+            <div class="hero-card-wrap reveal">
+                <div class="profile-photo-card">
+                    <img
+                        src="assets/profile.jpeg"
+                        alt="Portrait of Muhammad Mustaqim Chowdhury"
+                        decoding="async"
+                    >
                 </div>
             </div>
-
             <div class="skills-section">
                 <div class="skills-intro reveal">
                     <h2 class="skills-title">Technologies I work with</h2>
@@ -2761,48 +2604,6 @@
                     <div class="project-card-header">
                         <div class="project-icon" aria-hidden="true">
                             <svg viewBox="0 0 24 24" fill="none">
-                                <circle
-                                    cx="12"
-                                    cy="12"
-                                    r="8.5"
-                                    stroke="currentColor"
-                                    stroke-width="1.7"
-                                />
-                                <path
-                                    d="M3.7 12h16.6M12 3.5c2.4 2.3 3.6 5.1 3.6 8.5S14.4 18.2 12 20.5C9.6 18.2 8.4 15.4 8.4 12S9.6 5.8 12 3.5Z"
-                                    stroke="currentColor"
-                                    stroke-width="1.5"
-                                />
-                            </svg>
-                        </div>
-
-                        <span class="project-status">Completed</span>
-                    </div>
-
-                    <h3 class="project-title">Universe Explorer</h3>
-
-                    <p class="project-description">
-                        An educational website containing pages for eight planets,
-                        structured navigation, search, filtering, and responsive
-                        content.
-                    </p>
-
-                    <div class="project-technologies">
-                        <span class="technology-tag">HTML</span>
-                        <span class="technology-tag">CSS</span>
-                        <span class="technology-tag">JavaScript</span>
-                    </div>
-
-                    <!--
-                        Add the Universe Explorer repository and live demo links
-                        here after confirmed public URLs are available.
-                    -->
-                </article>
-
-                <article class="project-card reveal">
-                    <div class="project-card-header">
-                        <div class="project-icon" aria-hidden="true">
-                            <svg viewBox="0 0 24 24" fill="none">
                                 <path
                                     d="M8 4h8v5a4 4 0 0 1-8 0V4Z"
                                     stroke="currentColor"
@@ -3069,10 +2870,10 @@
                                 </svg>
                             </a>
 
-                            <!-- Replace ADD_INSTAGRAM_URL with the confirmed Instagram profile URL. -->
+                            <!-- Mustaqim's Instagram Profile -->
                             <a
                                 class="social-link placeholder-link"
-                                href="ADD_INSTAGRAM_URL"
+                                href="https://instagram.com/_mztaq"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 aria-label="Visit Mustaqim's Instagram profile"
