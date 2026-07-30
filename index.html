@@ -1328,8 +1328,8 @@
     
     .certificate-preview img {
         width: 100%;
-        aspect-ratio: 22 / 17;
-        object-fit: cover;
+        aspect-ratio: 4 / 3;
+        object-fit: contain;
         transition: transform 350ms ease;
     }
     
@@ -1857,10 +1857,6 @@
             width: 100%;
         }
 
-        .code-content {
-            padding: 23px 19px 26px;
-        }
-
         .skills-section {
             margin-top: 78px;
         }
@@ -1944,7 +1940,7 @@
             transform: none;
         }
 
-        .profile-code-card {
+        .profile-photo-card {
             transform: none;
         }
     }
@@ -3051,7 +3047,7 @@
                             <a
                                 class="social-link placeholder-link"
                                 id="emailSocialLink"
-                                href="mailto:ADD_EMAIL_ADDRESS"
+                                href="mailto:muhammadmustaqimchowdhury2010@gmail.com"
                                 aria-label="Email Mustaqim"
                                 title="Email"
                             >
@@ -3311,7 +3307,10 @@
     });
 
     document.addEventListener("keydown", (event) => {
-        if (event.key === "Escape") {
+        const menuIsOpen =
+            mobileMenuButton.getAttribute("aria-expanded") === "true";
+    
+        if (event.key === "Escape" && menuIsOpen) {
             setMobileMenu(false);
             mobileMenuButton.focus();
         }
