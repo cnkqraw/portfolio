@@ -100,8 +100,8 @@
       --section-y: clamp(4.2rem, 7vw, 6.2rem);
       --shadow-hard: 0 24px 70px hsl(0 0% 0% / .36);
       --shadow-red: 0 0 32px hsl(358 73% 45% / .13);
-      --font: Inter, Manrope, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      --mono: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+      --font: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
       --fast: 160ms cubic-bezier(.2, .8, .2, 1);
       --medium: 280ms cubic-bezier(.2, .8, .2, 1);
       --slow: 720ms cubic-bezier(.16, 1, .3, 1);
@@ -125,7 +125,7 @@
       background: var(--bg);
       font-family: var(--font);
       font-size: 16px;
-      line-height: 1.65;
+      line-height: 1.72;
       text-rendering: optimizeLegibility;
     }
 
@@ -133,6 +133,7 @@
     body.page-paused * { animation-play-state: paused !important; }
     [hidden] { display: none !important; }
     img, svg { display: block; }
+    figure { margin: 0; }
     img { max-width: 100%; height: auto; }
     a { color: inherit; text-decoration: none; }
     button, input, textarea { font: inherit; }
@@ -400,7 +401,7 @@
       background: hsl(358 73% 45% / .09);
       color: var(--accent-bright);
       text-transform: uppercase;
-      letter-spacing: .115em;
+      letter-spacing: .07em;
       font-size: .72rem;
       font-weight: 900;
       line-height: 1;
@@ -425,11 +426,11 @@
       margin: 0;
       color: var(--ink-strong);
       line-height: 1.05;
-      letter-spacing: -.04em;
+      letter-spacing: -.055em;
       text-wrap: balance;
     }
 
-    h1 { max-width: 920px; font-size: clamp(2.9rem, 7vw, 6.1rem); }
+    h1 { max-width: 920px; font-size: clamp(2.9rem, 7vw, 6.1rem); line-height: .98; }
     h2 { font-size: clamp(2rem, 4.4vw, 3.85rem); }
     h3 { font-size: clamp(1.2rem, 2.1vw, 1.55rem); }
     h4 { font-size: 1rem; letter-spacing: -.018em; }
@@ -491,6 +492,114 @@
       outline-offset: 3px;
     }
 
+    .scroll-route {
+      display: none;
+      position: fixed;
+      top: calc(var(--nav-height) + 2rem);
+      bottom: 3rem;
+      left: max(1rem, calc((100vw - var(--max-width)) / 2 + .15rem));
+      z-index: 0;
+      width: 24px;
+      pointer-events: none;
+      opacity: .62;
+    }
+
+    .scroll-route-track,
+    .scroll-route-fill {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 11px;
+      width: 1px;
+      background: hsl(0 8% 24% / .45);
+    }
+
+    .scroll-route-fill {
+      background: linear-gradient(180deg, var(--accent-bright), var(--accent), var(--accent-deep));
+      transform: scaleY(0);
+      transform-origin: top;
+      box-shadow: 0 0 18px hsl(358 73% 45% / .34);
+    }
+
+    .scroll-route-node {
+      position: absolute;
+      top: var(--node-y);
+      left: 6px;
+      width: 11px;
+      height: 11px;
+      border: 1px solid hsl(358 73% 45% / .58);
+      background: var(--bg-deep);
+      transform: rotate(45deg) scale(.82);
+      transition: transform var(--medium), background var(--medium), border-color var(--medium), box-shadow var(--medium);
+    }
+
+    .scroll-route-node.active {
+      background: var(--accent);
+      border-color: var(--accent-bright);
+      transform: rotate(45deg) scale(1);
+      box-shadow: 0 0 18px hsl(358 73% 45% / .34);
+    }
+
+    .hero-name-gradient {
+      width: fit-content;
+      max-width: 100%;
+      background: linear-gradient(100deg, var(--ink-strong), var(--accent-bright), var(--accent), var(--ink-strong));
+      background-size: 220% 100%;
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      -webkit-text-fill-color: transparent;
+      animation: heroNameReveal 860ms cubic-bezier(.16, 1, .3, 1) var(--hero-delay, 260ms) both, heroNameGradient 4.8s cubic-bezier(.45, 0, .25, 1) 1.2s infinite alternate;
+    }
+
+    .hero-enter {
+      opacity: 0;
+      transform: translateY(16px);
+      filter: blur(7px);
+      clip-path: inset(0 0 100% 0);
+      animation: heroContentReveal 680ms cubic-bezier(.16, 1, .3, 1) var(--hero-delay, 0ms) both;
+    }
+
+    .hero-enter--soft {
+      clip-path: inset(0 0 16% 0);
+    }
+
+    @keyframes heroContentReveal {
+      0% { opacity: 0; transform: translateY(16px); filter: blur(7px); clip-path: inset(0 0 100% 0); letter-spacing: .035em; }
+      100% { opacity: 1; transform: translateY(0); filter: blur(0); clip-path: inset(0 0 0 0); letter-spacing: inherit; }
+    }
+
+    @keyframes heroNameReveal {
+      0% { opacity: 0; transform: translateY(18px); filter: blur(8px); clip-path: inset(0 0 100% 0); letter-spacing: -.025em; }
+      100% { opacity: 1; transform: translateY(0); filter: blur(0); clip-path: inset(0 0 0 0); letter-spacing: -.055em; }
+    }
+
+    @keyframes heroNameGradient {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 100% 50%; }
+    }
+
+    @keyframes portraitRailEntrance {
+      0% { opacity: 0; transform: translate3d(var(--portrait-x, 0px), calc(-50% + 18px + var(--portrait-y, 0px)), 90px); filter: blur(8px); }
+      100% { opacity: 1; transform: translate3d(var(--portrait-x, 0px), calc(-50% + var(--portrait-y, 0px)), 90px); filter: blur(0); }
+    }
+
+    @keyframes portraitClipReveal {
+      0% { clip-path: polygon(0 0, 100% 0, 100% 0, 0 0); }
+      100% { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); }
+    }
+
+    @keyframes portraitLightSweep {
+      0% { transform: translateX(-120%); opacity: 0; }
+      18% { opacity: 1; }
+      100% { transform: translateX(120%); opacity: 0; }
+    }
+
+    @keyframes portraitEdgeTrace {
+      0% { opacity: 0; transform: scaleX(.05); }
+      100% { opacity: .9; transform: scaleX(1); }
+    }
+
     .hero {
       display: grid;
       align-items: center;
@@ -501,30 +610,33 @@
 
     .hero-grid {
       display: grid;
-      grid-template-columns: minmax(0, 1.1fr) minmax(360px, .9fr);
-      gap: clamp(2.2rem, 6vw, 5.4rem);
+      grid-template-columns: minmax(0, 1fr) minmax(420px, .95fr);
+      gap: clamp(2rem, 5vw, 4.8rem);
       align-items: center;
     }
 
     .hero-copy { display: grid; gap: 1.16rem; }
     .hero-status-row { display: flex; align-items: center; flex-wrap: wrap; gap: .65rem; margin-bottom: .35rem; }
-    .hero-role { color: var(--accent-bright); font-size: .84rem; font-weight: 900; letter-spacing: .055em; text-transform: uppercase; }
+    .hero-role { color: var(--accent-bright); font-size: .84rem; font-weight: 900; letter-spacing: .035em; text-transform: uppercase; }
 
     .hero-visual {
       position: relative;
-      min-height: clamp(430px, 55vw, 620px);
+      min-height: clamp(500px, 58vw, 690px);
       perspective: 1200px;
       transform-style: preserve-3d;
     }
 
     .portrait-rail {
       position: absolute;
-      right: clamp(1rem, 4vw, 2.8rem);
+      right: clamp(.25rem, 2.5vw, 1.6rem);
       top: 50%;
       z-index: 5;
-      width: min(78%, 390px);
-      transform: translateY(-50%) translateZ(90px);
+      width: min(96%, 500px);
+      transform: translate3d(var(--portrait-x, 0px), calc(-50% + var(--portrait-y, 0px)), 90px);
       padding-left: .82rem;
+      transition: transform 520ms cubic-bezier(.16, 1, .3, 1), filter var(--medium);
+      will-change: transform;
+      animation: portraitRailEntrance 940ms cubic-bezier(.16, 1, .3, 1) 760ms both;
     }
 
     .portrait-rail::before {
@@ -539,12 +651,39 @@
     }
 
     .portrait-frame {
+      position: relative;
       aspect-ratio: 4 / 5;
       overflow: hidden;
       border: 1px solid hsl(358 73% 45% / .5);
       border-radius: var(--radius);
       background: var(--panel);
       box-shadow: var(--shadow-hard);
+      clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+      animation: portraitClipReveal 980ms cubic-bezier(.16, 1, .3, 1) 720ms both;
+    }
+
+    .portrait-frame::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      background: linear-gradient(110deg, transparent 0 34%, hsl(358 100% 70% / .24) 48%, transparent 63% 100%);
+      transform: translateX(-120%);
+      animation: portraitLightSweep 980ms cubic-bezier(.16, 1, .3, 1) 1180ms both;
+      pointer-events: none;
+    }
+
+    .portrait-frame::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 3;
+      border-top: 2px solid var(--accent-bright);
+      border-left: 1px solid hsl(358 73% 45% / .55);
+      opacity: .9;
+      pointer-events: none;
+      transform-origin: left top;
+      animation: portraitEdgeTrace 900ms cubic-bezier(.16, 1, .3, 1) 900ms both;
     }
 
     .portrait-frame img {
@@ -556,84 +695,13 @@
       transition: transform var(--medium), filter var(--medium);
     }
 
-    .portrait-frame:hover img { transform: translateY(-4px) scale(1.014); filter: contrast(1.08) saturate(1.02); }
+    .portrait-rail:hover { filter: drop-shadow(0 18px 30px hsl(358 73% 45% / .12)); }
+    .portrait-frame:hover img { transform: translateY(-4px) scale(1.018); filter: contrast(1.08) saturate(1.02); }
 
-    .hero-cert-field {
-      position: absolute;
-      inset: 0;
-      z-index: 2;
-      pointer-events: none;
-      transform-style: preserve-3d;
-      contain: paint;
-    }
-
-    .hero-cert-layer {
-      position: absolute;
-      width: var(--cert-w);
-      opacity: var(--cert-opacity, .72);
-      filter: drop-shadow(0 18px 34px hsl(0 0% 0% / .42));
-      animation: heroCertificateFloat var(--float-duration, 14s) var(--float-ease, cubic-bezier(.45, 0, .25, 1)) infinite alternate;
-      animation-delay: var(--float-delay, 0s);
-      will-change: transform;
-      transform-style: preserve-3d;
-    }
-
-    .hero-cert-layer img {
-      width: 100%;
-      height: auto;
-      aspect-ratio: 4 / 3;
-      object-fit: contain;
-      border: 1px solid hsl(358 73% 45% / .46);
-      background: hsl(40 17% 86%);
-      box-shadow: inset 0 0 0 1px hsl(0 0% 100% / .18), 0 0 28px hsl(358 73% 45% / .17);
-      transform: translate3d(var(--mouse-x, 0px), var(--mouse-y, 0px), var(--depth, 0px)) rotateX(var(--mouse-rx, 0deg)) rotateY(var(--mouse-ry, 0deg)) rotateZ(var(--base-rotate, 0deg));
-      transition: transform 520ms cubic-bezier(.16, 1, .3, 1), opacity var(--medium), filter var(--medium);
-      will-change: transform;
-    }
-
-    .hero-cert-layer--gemini {
-      --cert-w: min(46vw, 360px);
-      --cert-opacity: .72;
-      --depth: 28px;
-      --base-rotate: -2deg;
-      --float-duration: 15s;
-      --float-delay: -2s;
-      left: 4%;
-      top: 9%;
-    }
-
-    .hero-cert-layer--linux {
-      --cert-w: min(34vw, 285px);
-      --cert-opacity: .58;
-      --depth: -15px;
-      --base-rotate: 2.2deg;
-      --float-duration: 18s;
-      --float-delay: -6s;
-      right: 0;
-      bottom: 8%;
-    }
-
-    .hero-cert-layer--claude {
-      --cert-w: min(25vw, 215px);
-      --cert-opacity: .34;
-      --depth: -64px;
-      --base-rotate: -1.2deg;
-      --float-duration: 21s;
-      --float-delay: -10s;
-      left: 12%;
-      bottom: 2%;
-      filter: blur(.4px) drop-shadow(0 16px 28px hsl(0 0% 0% / .34));
-    }
-
-    @keyframes heroCertificateFloat {
-      0% { transform: translate3d(0, -10px, 0) rotateX(1deg) rotateY(-2deg) rotateZ(-.4deg); }
-      50% { transform: translate3d(8px, 10px, 0) rotateX(-1deg) rotateY(2deg) rotateZ(.45deg); }
-      100% { transform: translate3d(-6px, -4px, 0) rotateX(.6deg) rotateY(-1.2deg) rotateZ(-.25deg); }
-    }
 
     .hero-note-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .7rem; margin-top: 1rem; }
     .note-card { border: 1px solid var(--line); border-left: 3px solid var(--accent); background: hsl(0 10% 13% / .72); padding: .85rem; }
-    .note-card span { display: block; color: var(--accent-bright); font-family: var(--mono); font-size: .72rem; text-transform: uppercase; letter-spacing: .11em; }
+    .note-card span { display: block; color: var(--accent-bright); font-family: var(--mono); font-size: .72rem; text-transform: uppercase; letter-spacing: .065em; }
     .note-card strong { display: block; margin-top: .35rem; color: var(--ink-strong); font-size: .95rem; }
 
     .skills-grid,
@@ -661,7 +729,6 @@
     }
 
     .panel:hover,
-    .project-card:hover,
     .timeline-content:hover { transform: translateY(-3px); border-color: hsl(358 73% 45% / .56); box-shadow: var(--shadow-red); }
     .panel, .contact-card { padding: 1.25rem; }
     .panel p { margin-top: .62rem; }
@@ -681,7 +748,7 @@
     .timeline-content p { margin-top: .62rem; }
 
     .project-card { display: flex; flex-direction: column; min-height: 290px; padding: 1.32rem; gap: .9rem; }
-    .project-card.hidden-by-filter { display: none; }
+    .project-card.hidden-by-filter { pointer-events: none; }
     .project-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; }
     .project-icon, .cert-icon { display: grid; place-items: center; width: 44px; height: 44px; border: 1px solid hsl(358 73% 45% / .48); background: hsl(358 73% 45% / .09); color: var(--accent-bright); }
     .project-icon svg, .cert-icon svg { width: 24px; height: 24px; }
@@ -692,33 +759,6 @@
       perspective: 1400px;
     }
 
-    .certificate-settle-field {
-      position: absolute;
-      inset: 0;
-      z-index: 1;
-      pointer-events: none;
-      overflow: hidden;
-      contain: paint;
-    }
-
-    .settle-cert {
-      position: absolute;
-      width: var(--settle-w, 250px);
-      height: auto;
-      aspect-ratio: 4 / 3;
-      object-fit: contain;
-      border: 1px solid hsl(358 73% 45% / .28);
-      background: hsl(40 17% 86%);
-      opacity: var(--settle-opacity, .1);
-      filter: drop-shadow(0 22px 44px hsl(0 0% 0% / .35));
-      transform: translate3d(0, var(--settle-y, 0px), var(--settle-z, 0px)) rotateZ(var(--settle-rotate, 0deg)) scale(var(--settle-scale, 1));
-      transition: opacity var(--medium);
-      will-change: transform, opacity;
-    }
-
-    .settle-cert--gemini { --settle-w: min(26vw, 310px); top: 4%; right: 5%; --settle-rotate: -2deg; }
-    .settle-cert--linux { --settle-w: min(22vw, 270px); bottom: 8%; left: 7%; --settle-rotate: 2deg; }
-    .settle-cert--claude { --settle-w: min(18vw, 220px); top: 36%; right: 18%; --settle-rotate: 1.5deg; opacity: .08; }
 
     .certificate-card {
       overflow: hidden;
@@ -776,12 +816,101 @@
     .skill-reveal-left.visible, .skill-reveal-right.visible { transform: translateX(0); }
     .project-card.reveal { transition-delay: var(--stagger, 0ms); }
     .timeline-item.reveal { transition-delay: var(--stagger, 0ms); }
+    .project-card {
+      overflow: hidden;
+      --pointer-x: 50%;
+      --pointer-y: 50%;
+      --card-rx: 0deg;
+      --card-ry: 0deg;
+    }
+
+    .project-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      opacity: 0;
+      background: radial-gradient(440px 220px at var(--pointer-x) var(--pointer-y), hsl(358 73% 45% / .16), transparent 68%);
+      transition: opacity var(--medium);
+      pointer-events: none;
+    }
+
+    .project-card::after {
+      content: "";
+      position: absolute;
+      right: 1rem;
+      bottom: 0;
+      left: 1rem;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--accent-bright), transparent);
+      transform: scaleX(0);
+      transform-origin: center;
+      transition: transform var(--medium);
+      pointer-events: none;
+    }
+
+    .project-card > * { position: relative; z-index: 1; }
+    .project-card:hover::before { opacity: 1; }
+    .project-card:hover::after { transform: scaleX(1); }
+    .project-card:hover .project-icon { transform: translate3d(3px, -3px, 0); }
+    .project-card .project-icon { transition: transform var(--medium), border-color var(--medium), background var(--medium); }
+    .project-card:hover .tag { transform: translateY(-1px); border-color: hsl(358 73% 45% / .38); }
+    .project-card .tag { transition: transform var(--fast), border-color var(--fast), background var(--fast); }
+    .project-card .tag:nth-child(2) { transition-delay: 24ms; }
+    .project-card .tag:nth-child(3) { transition-delay: 48ms; }
+    .project-card .tag:nth-child(4) { transition-delay: 72ms; }
+    .project-card .tag:nth-child(5) { transition-delay: 96ms; }
+    .project-card.filter-fading { opacity: 0; transform: translateY(12px) scale(.985); pointer-events: none; }
+    .project-card.visible:hover { transform: translateY(-6px) rotateX(var(--card-rx)) rotateY(var(--card-ry)); border-color: hsl(358 73% 45% / .68); }
+
+    .certificate-preview {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .certificate-preview::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(110deg, transparent 0 36%, hsl(0 0% 100% / .22) 50%, transparent 64% 100%);
+      transform: translateX(-120%);
+      transition: transform 680ms cubic-bezier(.16, 1, .3, 1);
+      pointer-events: none;
+    }
+
+    .certificate-card.cert-visible:hover {
+      transform: translateY(-7px);
+      border-color: hsl(358 73% 45% / .72);
+    }
+
+    .certificate-card:hover .certificate-preview::after { transform: translateX(120%); }
+
+    .btn {
+      --magnet-x: 0px;
+      --magnet-y: 0px;
+      transform: translate3d(var(--magnet-x), var(--magnet-y), 0);
+    }
+
+    .btn:hover { transform: translate3d(var(--magnet-x), calc(var(--magnet-y) - 2px), 0); }
+
+    .timeline::before {
+      transform: scaleY(0);
+      transform-origin: top;
+      transition: transform 1100ms cubic-bezier(.16, 1, .3, 1);
+    }
+
+    .timeline.timeline-visible::before { transform: scaleY(1); }
+    .timeline-marker { opacity: .45; transition: opacity var(--medium), transform var(--medium), box-shadow var(--medium), background var(--medium); }
+    .timeline-item.visible .timeline-marker { opacity: 1; animation: markerPulse 760ms cubic-bezier(.16, 1, .3, 1) 1; }
+
+    @keyframes markerPulse {
+      0% { box-shadow: 0 0 0 0 hsl(358 73% 45% / .28); }
+      55% { box-shadow: 0 0 0 9px hsl(358 73% 45% / .14); }
+      100% { box-shadow: 0 0 0 5px hsl(358 73% 45% / .09); }
+    }
 
     @media (max-width: 1040px) {
       .certificate-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .hero-cert-layer--gemini { --cert-w: min(48vw, 320px); }
-      .hero-cert-layer--linux { --cert-w: min(35vw, 245px); }
-      .hero-cert-layer--claude { --cert-w: min(28vw, 180px); }
     }
 
     @media (max-width: 900px) {
@@ -792,30 +921,33 @@
       .nav-links a { justify-content: flex-start; border: 1px solid var(--line); padding: .95rem; }
       .nav-indicator { display: none; }
       .hero-grid, .contact-grid { grid-template-columns: 1fr; }
-      .hero-visual { min-height: 500px; }
-      .portrait-rail { right: 50%; width: min(78%, 360px); transform: translate(50%, -50%) translateZ(70px); }
-      .hero-cert-layer--gemini { left: 1%; top: 7%; --cert-w: min(52vw, 260px); --cert-opacity: .34; }
-      .hero-cert-layer--linux { right: 0; bottom: 4%; --cert-w: min(46vw, 220px); --cert-opacity: .24; }
-      .hero-cert-layer--claude { display: none; }
+      .hero-visual { min-height: 560px; }
+      .portrait-rail { right: 50%; width: min(88%, 440px); transform: translate(calc(50% + var(--portrait-x, 0px)), calc(-50% + var(--portrait-y, 0px))) translateZ(70px); }
       .project-grid { grid-template-columns: 1fr; }
+      .scroll-route { display: none; }
     }
 
     @media (max-width: 700px) {
       .section { padding: 4.4rem var(--gutter); }
       .hero { padding-top: 3.8rem; }
+      .hero-visual { min-height: 520px; }
+      .portrait-rail { width: min(92%, 410px); }
       .skills-grid, .certificate-grid { grid-template-columns: 1fr; }
       .button-row, .btn { width: 100%; }
       .hero-note-grid { grid-template-columns: 1fr; }
       .timeline-item { padding-left: 2.8rem; }
       .footer-inner { display: grid; }
       .certificate-card[data-cert] { transform: translate3d(0, 24px, 0); }
-      .settle-cert { display: none; }
     }
 
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .001ms !important; }
       .reveal, .skill-reveal-left, .skill-reveal-right, .certificate-card[data-cert] { opacity: 1 !important; transform: none !important; }
-      .hero-cert-layer, .settle-cert { animation: none !important; transform: none !important; }
+      .hero-name-gradient { animation: none !important; background-position: 0 50% !important; }
+      .hero-enter, .portrait-rail, .portrait-frame { animation: none !important; opacity: 1 !important; filter: none !important; clip-path: none !important; }
+      .scroll-route-fill { transform: scaleY(1) !important; }
+      .ambient-background::before, .ambient-background::after, .bg-fragment { animation: none !important; }
+      .project-card.filter-fading { opacity: 1 !important; transform: none !important; }
     }
   </style>
   <noscript>
@@ -823,9 +955,15 @@
       .reveal,
       .skill-reveal-left,
       .skill-reveal-right,
-      .certificate-card[data-cert] {
+      .certificate-card[data-cert],
+      .hero-enter,
+      .hero-name-gradient,
+      .portrait-rail,
+      .portrait-frame {
         opacity: 1 !important;
         transform: none !important;
+        filter: none !important;
+        clip-path: none !important;
       }
     </style>
   </noscript>
@@ -847,6 +985,15 @@
 
   <a class="skip-link" href="#main">Skip to content</a>
   <div class="progress-bar" aria-hidden="true"></div>
+  <div class="scroll-route" aria-hidden="true">
+    <span class="scroll-route-track"></span>
+    <span class="scroll-route-fill"></span>
+    <span class="scroll-route-node" style="--node-y: 6%" data-route-at="0.06"></span>
+    <span class="scroll-route-node" style="--node-y: 27%" data-route-at="0.27"></span>
+    <span class="scroll-route-node" style="--node-y: 49%" data-route-at="0.49"></span>
+    <span class="scroll-route-node" style="--node-y: 71%" data-route-at="0.71"></span>
+    <span class="scroll-route-node" style="--node-y: 92%" data-route-at="0.92"></span>
+  </div>
   <div class="ambient-background" aria-hidden="true">
       <span class="bg-fragment bg-fragment-1" aria-hidden="true"></span>
       <span class="bg-fragment bg-fragment-2" aria-hidden="true"></span>
@@ -893,29 +1040,24 @@
   <main id="main">
     <section class="hero section-track" id="who-i-am" aria-labelledby="hero-title">
       <div class="container hero-grid">
-        <div class="hero-copy reveal">
-          <div class="hero-status-row"><span class="status">Learning Rust • Building with Python • Exploring AI</span></div>
-          <span class="kicker">Student Developer and Automation Builder</span>
-          <h1 id="hero-title">Muhammad Mustaqim Chowdhury</h1>
-          <p class="hero-role">Student Developer and Automation Builder</p>
-          <p class="lead">Building practical systems, one project at a time.</p>
-          <p>I am a Year 10 student at Newton British Academy Barwa City, based in Qatar with roots in Bangladesh. I focus on building practical systems with Python, Rust, automation, web technologies, artificial intelligence, and self-hosted infrastructure. I enjoy turning ideas into working projects, learning how systems operate, and improving every project through testing and iteration.</p>
-          <div class="button-row">
+        <div class="hero-copy hero-sequence">
+          <div class="hero-status-row hero-enter" style="--hero-delay: 60ms"><span class="status">Learning Rust • Building with Python • Exploring AI</span></div>
+          <span class="kicker hero-enter" style="--hero-delay: 140ms">Student Developer and Automation Builder</span>
+          <h1 id="hero-title" class="hero-name-gradient" style="--hero-delay: 230ms">Muhammad Mustaqim Chowdhury</h1>
+          <p class="hero-role hero-enter" style="--hero-delay: 350ms">Student Developer and Automation Builder</p>
+          <p class="lead hero-enter hero-enter--soft" style="--hero-delay: 440ms">Building practical systems, one project at a time.</p>
+          <p class="hero-enter hero-enter--soft" style="--hero-delay: 520ms">I am a Year 10 student at Newton British Academy Barwa City, based in Qatar with roots in Bangladesh. I focus on building practical systems with Python, Rust, automation, web technologies, artificial intelligence, and self-hosted infrastructure. I enjoy turning ideas into working projects, learning how systems operate, and improving every project through testing and iteration.</p>
+          <div class="button-row hero-enter hero-enter--soft" style="--hero-delay: 610ms">
             <a class="btn primary" href="#projects">View My Projects <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-arrow"></use></svg></a>
             <a class="btn" href="#contact">Contact Me</a>
           </div>
-          <div class="hero-note-grid" aria-label="Profile highlights">
+          <div class="hero-note-grid hero-enter hero-enter--soft" style="--hero-delay: 700ms" aria-label="Profile highlights">
             <div class="note-card"><span>Education</span><strong>Year 10 at Newton British Academy Barwa City</strong></div>
             <div class="note-card"><span>Location</span><strong>Based in Qatar with roots in Bangladesh</strong></div>
           </div>
         </div>
 
-        <aside class="hero-visual reveal" id="heroVisual" aria-label="Profile photograph and certificate composition">
-          <div class="hero-cert-field" aria-hidden="true">
-            <figure class="hero-cert-layer hero-cert-layer--gemini" data-depth="1.00"><img src="certificates/gemini-certified-student.webp" alt="" draggable="false"></figure>
-            <figure class="hero-cert-layer hero-cert-layer--linux" data-depth="0.65"><img src="certificates/linux-unhatched-certificate.webp" alt="" draggable="false"></figure>
-            <figure class="hero-cert-layer hero-cert-layer--claude" data-depth="0.38"><img src="certificates/claude-101-certificate.webp" alt="" draggable="false"></figure>
-          </div>
+        <aside class="hero-visual hero-portrait-motion" id="heroVisual" aria-label="Profile photograph of Muhammad Mustaqim Chowdhury">
           <div class="portrait-rail">
             <figure class="portrait-frame"><img src="assets/profile.jpeg" alt="Portrait of Muhammad Mustaqim Chowdhury" width="800" height="1000"></figure>
           </div>
@@ -965,11 +1107,6 @@
     </section>
 
     <section class="section certificates-section section-track" id="certificates" aria-labelledby="certificates-title">
-      <div class="certificate-settle-field" aria-hidden="true">
-        <img class="settle-cert settle-cert--gemini scroll-float" data-float-speed="0.12" data-float-rotate="-1.4" src="certificates/gemini-certified-student.webp" alt="">
-        <img class="settle-cert settle-cert--linux scroll-float" data-float-speed="-0.1" data-float-rotate="1.1" src="certificates/linux-unhatched-certificate.webp" alt="">
-        <img class="settle-cert settle-cert--claude scroll-float" data-float-speed="0.07" data-float-rotate=".8" src="certificates/claude-101-certificate.webp" alt="">
-      </div>
       <div class="container">
         <div class="section-head reveal"><span class="label">Certificates</span><h2 id="certificates-title">Learning and qualifications</h2><p class="lead">Certificates and credentials earned through technical courses, assessments, and training programmes.</p></div>
         <div class="certificate-grid">
@@ -1001,6 +1138,8 @@
       const contactEmail = 'muhammadmustaqimchowdhury2010@gmail.com';
       const header = document.getElementById('siteHeader');
       const progress = document.querySelector('.progress-bar');
+      const routeFill = document.querySelector('.scroll-route-fill');
+      const routeNodes = Array.from(document.querySelectorAll('.scroll-route-node'));
       const backToTop = document.getElementById('backToTop');
       const menuButton = document.querySelector('.menu-toggle');
       const navLinks = document.getElementById('navLinks');
@@ -1011,19 +1150,14 @@
       const projectFilters = Array.from(document.querySelectorAll('.filter-button[data-project-filter]'));
       const projectCards = Array.from(document.querySelectorAll('.project-card'));
       const certificateCards = Array.from(document.querySelectorAll('.certificate-card'));
-      const floaters = Array.from(document.querySelectorAll('.scroll-float'));
+      const timeline = document.querySelector('.timeline');
       const heroVisual = document.getElementById('heroVisual');
-      const heroCertImages = Array.from(document.querySelectorAll('.hero-cert-layer img'));
+      const portraitRail = document.querySelector('.portrait-rail');
       const reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
       const finePointerQuery = window.matchMedia('(pointer: fine)');
 
       let activeProjectFilter = 'all';
       let scrollTicking = false;
-      let mouseTicking = false;
-      let mouseTargetX = 0;
-      let mouseTargetY = 0;
-      let mouseCurrentX = 0;
-      let mouseCurrentY = 0;
 
       const setYear = () => {
         const yearTarget = document.getElementById('year');
@@ -1042,36 +1176,24 @@
       const updateScrollChrome = () => {
         const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
         const ratio = maxScroll > 0 ? window.scrollY / maxScroll : 0;
-        progress.style.width = `${Math.max(0, Math.min(1, ratio)) * 100}%`;
+        const clampedRatio = Math.max(0, Math.min(1, ratio));
+        progress.style.width = `${clampedRatio * 100}%`;
+        if (routeFill) routeFill.style.transform = `scaleY(${clampedRatio.toFixed(4)})`;
+        routeNodes.forEach((node) => {
+          const threshold = Number(node.dataset.routeAt || 0);
+          node.classList.toggle('active', clampedRatio >= threshold);
+        });
         header.classList.toggle('scrolled', window.scrollY > 18);
         backToTop.classList.toggle('visible', window.scrollY > 520);
-      };
-
-      const updateScrollMotion = () => {
-        scrollTicking = false;
-        updateScrollChrome();
-        if (reducedMotionQuery.matches) return;
-
-        const viewportHeight = window.innerHeight || 1;
-        floaters.forEach((item) => {
-          const rect = item.getBoundingClientRect();
-          const progressThroughViewport = (rect.top + rect.height / 2 - viewportHeight / 2) / viewportHeight;
-          const clamped = Math.max(-1.2, Math.min(1.2, progressThroughViewport));
-          const speed = Number(item.dataset.floatSpeed || 0.06);
-          const rotate = Number(item.dataset.floatRotate || 0.8);
-          const y = clamped * -120 * speed;
-          const rotation = clamped * rotate;
-          const scale = 1 - Math.abs(clamped) * 0.018;
-          const opacityBoost = Math.max(0, 1 - Math.abs(clamped));
-          item.style.transform = `translate3d(0, ${y.toFixed(2)}px, 0) rotateZ(${rotation.toFixed(3)}deg) scale(${scale.toFixed(3)})`;
-          item.style.opacity = String(Math.min(0.22, (Number(getComputedStyle(item).getPropertyValue('--float-opacity')) || 0.1) + opacityBoost * 0.04));
-        });
       };
 
       const requestScrollUpdate = () => {
         if (scrollTicking) return;
         scrollTicking = true;
-        requestAnimationFrame(updateScrollMotion);
+        requestAnimationFrame(() => {
+          scrollTicking = false;
+          updateScrollChrome();
+        });
       };
 
       const closeMenu = () => {
@@ -1112,8 +1234,10 @@
         if (!('IntersectionObserver' in window) || reducedMotionQuery.matches) {
           revealTargets.forEach((target) => target.classList.add('visible'));
           certificateCards.forEach((card) => card.classList.add('cert-visible'));
+          if (timeline) timeline.classList.add('timeline-visible');
           return;
         }
+
         const revealObserver = new IntersectionObserver((entries) => {
           entries.forEach((entry) => {
             if (!entry.isIntersecting) return;
@@ -1123,11 +1247,22 @@
         }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
         revealTargets.forEach((target) => revealObserver.observe(target));
 
+        if (timeline) {
+          const timelineObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+              if (!entry.isIntersecting) return;
+              timeline.classList.add('timeline-visible');
+              timelineObserver.disconnect();
+            });
+          }, { threshold: 0.18, rootMargin: '0px 0px -18% 0px' });
+          timelineObserver.observe(timeline);
+        }
+
         let certificatesShown = false;
         const showCertificates = () => {
           if (certificatesShown) return;
           certificatesShown = true;
-          certificateCards.forEach((card, index) => window.setTimeout(() => card.classList.add('cert-visible'), index * 100));
+          certificateCards.forEach((card, index) => window.setTimeout(() => card.classList.add('cert-visible'), index * 110));
         };
         const certificateObserver = new IntersectionObserver((entries) => {
           entries.forEach((entry) => {
@@ -1135,15 +1270,9 @@
             showCertificates();
             certificateObserver.disconnect();
           });
-        }, { threshold: 0.05, rootMargin: '0px 0px -12% 0px' });
+        }, { threshold: 0.08, rootMargin: '0px 0px -12% 0px' });
         const certSection = document.getElementById('certificates');
-        if (certSection) {
-          certificateObserver.observe(certSection);
-          window.addEventListener('scroll', () => {
-            const rect = certSection.getBoundingClientRect();
-            if (rect.top < window.innerHeight * 0.82 && rect.bottom > 0) showCertificates();
-          }, { passive: true });
-        }
+        if (certSection) certificateObserver.observe(certSection);
       };
 
       const setupActiveSections = () => {
@@ -1161,14 +1290,23 @@
           });
         }, { threshold: 0.35, rootMargin: '-20% 0px -45% 0px' });
         sections.forEach((section) => activeObserver.observe(section));
-        window.addEventListener('resize', () => updateNavIndicator(document.querySelector('.nav-links a.active')));
+        window.addEventListener('resize', () => requestAnimationFrame(() => updateNavIndicator(document.querySelector('.nav-links a.active'))));
       };
 
       const setupProjectFilters = () => {
         const apply = () => {
           projectCards.forEach((card) => {
             const category = card.dataset.category || '';
-            card.classList.toggle('hidden-by-filter', activeProjectFilter !== 'all' && !category.includes(activeProjectFilter));
+            const shouldHide = activeProjectFilter !== 'all' && !category.includes(activeProjectFilter);
+            if (shouldHide) {
+              card.classList.add('filter-fading', 'hidden-by-filter');
+              window.setTimeout(() => {
+                if (card.classList.contains('hidden-by-filter')) card.hidden = true;
+              }, reducedMotionQuery.matches ? 0 : 190);
+            } else {
+              card.hidden = false;
+              requestAnimationFrame(() => card.classList.remove('filter-fading', 'hidden-by-filter'));
+            }
           });
         };
         projectFilters.forEach((button) => {
@@ -1180,57 +1318,119 @@
         });
       };
 
-      const setupHeroParallax = () => {
-        if (!heroVisual || reducedMotionQuery.matches || !finePointerQuery.matches) return;
+      const setupPortraitMotion = () => {
+        if (!heroVisual || !portraitRail || reducedMotionQuery.matches || !finePointerQuery.matches) return;
+        let frameRequested = false;
+        let targetX = 0;
+        let targetY = 0;
+        let currentX = 0;
+        let currentY = 0;
+
         const render = () => {
-          mouseTicking = false;
-          mouseCurrentX += (mouseTargetX - mouseCurrentX) * 0.08;
-          mouseCurrentY += (mouseTargetY - mouseCurrentY) * 0.08;
-          heroCertImages.forEach((img) => {
-            const layer = img.closest('.hero-cert-layer');
-            const depth = Number(layer?.dataset.depth || 0.5);
-            const x = mouseCurrentX * 18 * depth;
-            const y = mouseCurrentY * 14 * depth;
-            const rx = mouseCurrentY * -2.2 * depth;
-            const ry = mouseCurrentX * 3.2 * depth;
-            img.style.setProperty('--mouse-x', `${x.toFixed(2)}px`);
-            img.style.setProperty('--mouse-y', `${y.toFixed(2)}px`);
-            img.style.setProperty('--mouse-rx', `${rx.toFixed(3)}deg`);
-            img.style.setProperty('--mouse-ry', `${ry.toFixed(3)}deg`);
-          });
-          if (Math.abs(mouseCurrentX - mouseTargetX) > 0.002 || Math.abs(mouseCurrentY - mouseTargetY) > 0.002) requestMouseFrame();
+          frameRequested = false;
+          currentX += (targetX - currentX) * 0.12;
+          currentY += (targetY - currentY) * 0.12;
+          portraitRail.style.setProperty('--portrait-x', `${currentX.toFixed(2)}px`);
+          portraitRail.style.setProperty('--portrait-y', `${currentY.toFixed(2)}px`);
+          if (Math.abs(currentX - targetX) > 0.04 || Math.abs(currentY - targetY) > 0.04) requestFrame();
         };
-        const requestMouseFrame = () => {
-          if (mouseTicking) return;
-          mouseTicking = true;
+
+        const requestFrame = () => {
+          if (frameRequested) return;
+          frameRequested = true;
           requestAnimationFrame(render);
         };
+
         heroVisual.addEventListener('pointermove', (event) => {
           const rect = heroVisual.getBoundingClientRect();
-          mouseTargetX = ((event.clientX - rect.left) / rect.width - 0.5) * 2;
-          mouseTargetY = ((event.clientY - rect.top) / rect.height - 0.5) * 2;
-          requestMouseFrame();
+          const x = ((event.clientX - rect.left) / rect.width - 0.5) * 2;
+          const y = ((event.clientY - rect.top) / rect.height - 0.5) * 2;
+          targetX = Math.max(-1, Math.min(1, x)) * 5;
+          targetY = Math.max(-1, Math.min(1, y)) * 5;
+          requestFrame();
         });
+
         heroVisual.addEventListener('pointerleave', () => {
-          mouseTargetX = 0;
-          mouseTargetY = 0;
-          requestMouseFrame();
+          targetX = 0;
+          targetY = 0;
+          requestFrame();
         });
       };
 
-      const setupCertificateTilt = () => {
+      const setupProjectCardInteractions = () => {
         if (reducedMotionQuery.matches || !finePointerQuery.matches) return;
-        certificateCards.forEach((card) => {
+        projectCards.forEach((card) => {
+          let frameRequested = false;
+          let nextX = 50;
+          let nextY = 50;
+          let nextRotateX = 0;
+          let nextRotateY = 0;
+
+          const render = () => {
+            frameRequested = false;
+            card.style.setProperty('--pointer-x', `${nextX.toFixed(2)}%`);
+            card.style.setProperty('--pointer-y', `${nextY.toFixed(2)}%`);
+            card.style.setProperty('--card-rx', `${nextRotateX.toFixed(3)}deg`);
+            card.style.setProperty('--card-ry', `${nextRotateY.toFixed(3)}deg`);
+          };
+
+          const requestFrame = () => {
+            if (frameRequested) return;
+            frameRequested = true;
+            requestAnimationFrame(render);
+          };
+
           card.addEventListener('pointermove', (event) => {
             const rect = card.getBoundingClientRect();
-            const x = (event.clientX - rect.left) / rect.width - 0.5;
-            const y = (event.clientY - rect.top) / rect.height - 0.5;
-            const rotateX = y * -5;
-            const rotateY = x * 5;
-            card.style.transform = `perspective(900px) translateY(-7px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg)`;
+            const x = (event.clientX - rect.left) / rect.width;
+            const y = (event.clientY - rect.top) / rect.height;
+            nextX = x * 100;
+            nextY = y * 100;
+            nextRotateX = (0.5 - y) * 0.8;
+            nextRotateY = (x - 0.5) * 0.8;
+            requestFrame();
           });
+
           card.addEventListener('pointerleave', () => {
-            card.style.transform = '';
+            nextX = 50;
+            nextY = 50;
+            nextRotateX = 0;
+            nextRotateY = 0;
+            requestFrame();
+          });
+        });
+      };
+
+      const setupMagneticButtons = () => {
+        if (reducedMotionQuery.matches || !finePointerQuery.matches) return;
+        document.querySelectorAll('.btn').forEach((button) => {
+          let frameRequested = false;
+          let nextX = 0;
+          let nextY = 0;
+
+          const render = () => {
+            frameRequested = false;
+            button.style.setProperty('--magnet-x', `${nextX.toFixed(2)}px`);
+            button.style.setProperty('--magnet-y', `${nextY.toFixed(2)}px`);
+          };
+
+          const requestFrame = () => {
+            if (frameRequested) return;
+            frameRequested = true;
+            requestAnimationFrame(render);
+          };
+
+          button.addEventListener('pointermove', (event) => {
+            const rect = button.getBoundingClientRect();
+            nextX = ((event.clientX - rect.left) / rect.width - 0.5) * 5;
+            nextY = ((event.clientY - rect.top) / rect.height - 0.5) * 4;
+            requestFrame();
+          });
+
+          button.addEventListener('pointerleave', () => {
+            nextX = 0;
+            nextY = 0;
+            requestFrame();
           });
         });
       };
@@ -1281,8 +1481,9 @@
         setupRevealAnimations();
         setupActiveSections();
         setupProjectFilters();
-        setupHeroParallax();
-        setupCertificateTilt();
+        setupPortraitMotion();
+        setupProjectCardInteractions();
+        setupMagneticButtons();
         setupContactForm();
         requestScrollUpdate();
         window.addEventListener('scroll', requestScrollUpdate, { passive: true });
@@ -1294,3 +1495,4 @@
   </script>
 </body>
 </html>
+
