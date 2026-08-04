@@ -1028,6 +1028,7 @@
       <button class="menu-toggle" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="navLinks"><span></span><span></span><span></span></button>
       <div class="nav-links" id="navLinks">
         <a href="#who-i-am">Who I Am</a>
+        <a href="#skills">Skills</a>
         <a href="#journey">Journey</a>
         <a href="#projects">Projects</a>
         <a href="#certificates">Certificates</a>
@@ -1065,7 +1066,7 @@
       </div>
     </section>
 
-    <section class="section alt" aria-labelledby="skills-title">
+    <section class="section alt section-track" id="skills" aria-labelledby="skills-title">
       <div class="container">
         <div class="section-head reveal"><span class="label">Skills</span><h2 id="skills-title">Technologies I work with</h2><p class="lead">My skills cover programming, web development, automation, AI integrations, Linux systems, backend development, and the tools needed to deploy and maintain practical projects.</p></div>
         <div class="skills-grid">
@@ -1276,21 +1277,43 @@
       };
 
       const setupActiveSections = () => {
-        if (!('IntersectionObserver' in window)) return;
-        const activeObserver = new IntersectionObserver((entries) => {
-          entries.forEach((entry) => {
-            if (!entry.isIntersecting) return;
-            let activeLink = null;
-            navItems.forEach((link) => {
-              const active = link.getAttribute('href') === `#${entry.target.id}`;
-              link.classList.toggle('active', active);
-              if (active) activeLink = link;
+        let activeNavTicking = false;
+
+        const setActiveNav = () => {
+          if (!sections.length) return;
+
+          const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+          const atPageBottom = maxScroll > 0 && window.scrollY >= maxScroll - 8;
+          const referenceY = window.scrollY + Math.min(window.innerHeight * 0.42, window.innerHeight - 120);
+          let activeSection = atPageBottom ? sections[sections.length - 1] : sections[0];
+
+          if (!atPageBottom) {
+            sections.forEach((section) => {
+              if (section.offsetTop <= referenceY) activeSection = section;
             });
-            updateNavIndicator(activeLink);
+          }
+
+          let activeLink = null;
+          navItems.forEach((link) => {
+            const active = link.getAttribute('href') === `#${activeSection.id}`;
+            link.classList.toggle('active', active);
+            if (active) activeLink = link;
           });
-        }, { threshold: 0.35, rootMargin: '-20% 0px -45% 0px' });
-        sections.forEach((section) => activeObserver.observe(section));
-        window.addEventListener('resize', () => requestAnimationFrame(() => updateNavIndicator(document.querySelector('.nav-links a.active'))));
+          updateNavIndicator(activeLink);
+        };
+
+        const requestActiveNavUpdate = () => {
+          if (activeNavTicking) return;
+          activeNavTicking = true;
+          requestAnimationFrame(() => {
+            activeNavTicking = false;
+            setActiveNav();
+          });
+        };
+
+        setActiveNav();
+        window.addEventListener('scroll', requestActiveNavUpdate, { passive: true });
+        window.addEventListener('resize', requestActiveNavUpdate);
       };
 
       const setupProjectFilters = () => {
