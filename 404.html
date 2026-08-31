@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 | Mustaqim</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 2rem;
+      background:
+        radial-gradient(circle at 75% 20%, rgba(220, 31, 40, .12), transparent 30rem),
+        #120b0b;
+      color: #f5f1ed;
+      font-family: Inter, system-ui, sans-serif;
+    }
+
+    .error {
+      width: min(100%, 720px);
+      border-left: 3px solid #dc1f28;
+      padding: clamp(1.5rem, 5vw, 3rem);
+    }
+
+    .code {
+      color: #ff595f;
+      font-family: Consolas, monospace;
+      font-size: .85rem;
+      font-weight: 800;
+      letter-spacing: .12em;
+    }
+
+    h1 {
+      margin: .8rem 0;
+      font-size: clamp(4rem, 14vw, 9rem);
+      line-height: .9;
+      letter-spacing: -.07em;
+    }
+
+    h2 {
+      margin: 1rem 0 .6rem;
+      font-size: clamp(1.5rem, 4vw, 2.5rem);
+    }
+
+    p {
+      max-width: 520px;
+      margin: 0 0 1.6rem;
+      color: #b9b0aa;
+      line-height: 1.7;
+    }
+
+    a {
+      display: inline-block;
+      border: 1px solid #dc1f28;
+      padding: .8rem 1rem;
+      background: #dc1f28;
+      color: white;
+      text-decoration: none;
+      font-weight: 800;
+    }
+
+    a:hover {
+      background: #8e1720;
+    }
+  </style>
+</head>
+
+<body>
+  <main class="error">
+    <div class="code">ERROR / 404</div>
+
+    <h1>404</h1>
+
+    <h2>Nothing here.</h2>
+
+    <p>
+      The page or resource you're looking for doesn't exist,
+      has moved, or isn't available directly.
+    </p>
+
+    <a href="/">Back to portfolio</a>
+  </main>
+</body>
+</html>
