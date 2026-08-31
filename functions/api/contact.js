@@ -194,7 +194,22 @@ export async function onRequestPost(context) {
         403
       );
     }
-
+    /*
+    * Prevents large JSON bodies
+    */
+    const contentLength = Number(
+      request.headers.get("content-length") || "0"
+    );
+    
+    if (contentLength > 15000) {
+      return json(
+        {
+          ok: false,
+          error: "Request too large."
+        },
+        413
+      );
+    }
     /*
      * 3. Parse request
      */
