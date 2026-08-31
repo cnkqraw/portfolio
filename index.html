@@ -64,7 +64,11 @@
         type="image/svg+xml"
         href="/favicon.svg"
     >
-
+    <script
+        src="https://challenges.cloudflare.com/turnstile/v0/api.js"
+        async
+        defer
+    ></script>
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -1460,7 +1464,14 @@
                       autocomplete="off"
                   >
               </div>
-        
+              <div
+                  id="contact-turnstile"
+                  class="cf-turnstile"
+                  data-sitekey="0x4AAAAAAEjJyhZ17M9ux4HU"
+                  data-theme="dark"
+                  data-size="flexible"
+                  data-action="contact"
+              ></div>        
               <p
                   class="form-status"
                   id="formStatus"
@@ -1918,15 +1929,24 @@
         
           form.addEventListener('submit', async (event) => {
             event.preventDefault();
-        
             if (!validate()) {
               status.textContent =
                 'Please fix the highlighted fields.';
-        
+            
               status.dataset.state = 'error';
               return;
             }
-        
+            
+            const turnstileToken =
+              form.querySelector('[name="cf-turnstile-response"]')?.value || '';
+            
+            if (!turnstileToken) {
+              status.textContent =
+                'Please complete the security verification.';
+            
+              status.dataset.state = 'error';
+              return;
+            }       
             submitButton.disabled = true;
             submitButton.textContent = 'Sending...';
         
@@ -1945,7 +1965,8 @@
                   name: fields.name.value.trim(),
                   email: fields.email.value.trim(),
                   message: fields.message.value.trim(),
-                  website: fields.website.value.trim()
+                  website: fields.website.value.trim(),
+                  turnstileToken
                 })
               });
         
@@ -1974,15 +1995,20 @@
         
             } catch (error) {
               console.error(error);
-        
+            
               status.textContent =
+                error.message ||
                 'Could not send your message. Please try again or use the email link.';
-        
+            
               status.dataset.state = 'error';
         
-            } finally {
+           } finally {
               submitButton.disabled = false;
               submitButton.textContent = 'Send Message';
+            
+              if (window.turnstile) {
+                window.turnstile.reset('#contact-turnstile');
+              }
             }
           });
         };
