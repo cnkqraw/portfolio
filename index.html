@@ -798,6 +798,28 @@
     .project-card { display: flex; flex-direction: column; min-height: 290px; padding: 1.32rem; gap: .9rem; }
     .project-card.hidden-by-filter { pointer-events: none; }
     .project-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; }
+    .project-image {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        overflow: hidden;
+        border: 1px solid var(--line);
+        background: var(--panel-sunken);
+    }
+
+    .project-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition:
+            transform var(--medium),
+            filter var(--medium);
+    }
+    
+    .project-card:hover .project-image img {
+        transform: scale(1.025);
+        filter: contrast(1.04);
+    }
     .project-icon, .cert-icon { display: grid; place-items: center; width: 44px; height: 44px; border: 1px solid hsl(358 73% 45% / .48); background: hsl(358 73% 45% / .09); color: var(--accent-bright); }
     .project-icon svg, .cert-icon svg { width: 24px; height: 24px; }
     .project-card .button-row { margin-top: auto; }
@@ -1144,13 +1166,179 @@
     <section class="section alt section-track" id="projects" aria-labelledby="projects-title">
       <div class="container">
         <div class="section-head reveal"><span class="label">My Projects</span><h2 id="projects-title">Practical work and experiments</h2><p class="lead">These projects cover automation, artificial intelligence, self-hosting, backend development, web development, media processing, and technical work created for school and competitions.</p></div>
-        <div class="filter-row reveal" role="group" aria-label="Filter projects"><button class="filter-button active" type="button" data-project-filter="all">All</button><button class="filter-button" type="button" data-project-filter="ai">AI</button><button class="filter-button" type="button" data-project-filter="automation">Automation</button><button class="filter-button" type="button" data-project-filter="infrastructure">Infrastructure</button><button class="filter-button" type="button" data-project-filter="web">Web</button><button class="filter-button" type="button" data-project-filter="media">Media</button></div>
-        <div class="project-grid">
-          <article class="project-card reveal" data-category="ai automation backend" style="--stagger: 0ms"><div class="project-top"><div class="project-icon" aria-hidden="true"><svg><use href="#icon-chat"></use></svg></div><span class="status">Active Project</span></div><h3>QuantumGPT</h3><p>An AI-powered Discord bot built with JavaScript. It responds when mentioned and connects to external language-model providers for intelligent conversations.</p><div class="tag-list"><span class="tag">JavaScript</span><span class="tag">Discord.js</span><span class="tag">APIs</span><span class="tag">Linux</span><span class="tag">systemd</span></div></article>
-          <article class="project-card reveal" data-category="infrastructure automation backend" style="--stagger: 160ms"><div class="project-top"><div class="project-icon" aria-hidden="true"><svg><use href="#icon-server"></use></svg></div><span class="status">Ongoing</span></div><h3>My Home Lab</h3><p>Built and maintain a self-hosted Ubuntu environment for running Docker services, automation workflows, monitoring, remote development and experimental backend applications.</p><div class="tag-list"><span class="tag">Ubuntu Server</span><span class="tag">Docker</span><span class="tag">Tailscale</span><span class="tag">Redis</span><span class="tag">Cloudflare</span><span class="tag">systemd</span></div></article>
-          <article class="project-card reveal" data-category="web competition" style="--stagger: 240ms"><div class="project-top"><div class="project-icon" aria-hidden="true"><svg><use href="#icon-page"></use></svg></div><span class="status">Completed</span></div><h3>Newton Competition Project</h3><p>A team competition project that shows how my school was shaped by Dr. Jabr's (the co-founder of my school). The project achieved second place.</p><div class="tag-list"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">GameMaker</span><span class="tag">itch.io</span></div><div class="button-row"><a class="btn primary" href="https://amar-abdelhak-ayache.itch.io/newton-saga-drjabr-the-problems-he-faced" target="_blank" rel="noopener noreferrer">View Game</a></div></article>
-          <article class="project-card reveal" data-category="automation media backend" style="--stagger: 320ms"><div class="project-top"><div class="project-icon" aria-hidden="true"><svg><use href="#icon-video"></use></svg></div><span class="status">Development Project</span></div><h3>Automated Short-Video Pipeline</h3><p>A workflow that generates narrated short videos using text-to-speech, subtitles, automated rendering, and media processing.</p><div class="tag-list"><span class="tag">n8n</span><span class="tag">Python</span><span class="tag">FastAPI</span><span class="tag">Edge TTS</span><span class="tag">FFmpeg</span></div></article>
-        </div>
+          <div class="filter-row reveal" role="group" aria-label="Filter projects"><button class="filter-button active" type="button" data-project-filter="all">All</button><button class="filter-button" type="button" data-project-filter="ai">AI</button><button class="filter-button" type="button" data-project-filter="automation">Automation</button><button class="filter-button" type="button" data-project-filter="infrastructure">Infrastructure</button><button class="filter-button" type="button" data-project-filter="web">Web</button><button class="filter-button" type="button" data-project-filter="media">Media</button></div>
+            <div class="project-grid">
+            
+                <!-- QuantumGPT -->
+                <article
+                    class="project-card reveal"
+                    data-category="ai automation backend"
+                    style="--stagger: 0ms"
+                >
+                    <div class="project-image">
+                        <img
+                            src="assets/quantumgpt.webp"
+                            alt="QuantumGPT Discord bot project"
+                            loading="lazy"
+                            decoding="async"
+                        >
+                    </div>
+            
+                    <div class="project-top">
+                        <div class="project-icon" aria-hidden="true">
+                            <svg><use href="#icon-chat"></use></svg>
+                        </div>
+                        <span class="status">Active Project</span>
+                    </div>
+            
+                    <h3>QuantumGPT</h3>
+            
+                    <p>
+                        An AI-powered Discord bot built with JavaScript. It responds when
+                        mentioned and connects to external language-model providers for
+                        intelligent conversations.
+                    </p>
+            
+                    <div class="tag-list">
+                        <span class="tag">JavaScript</span>
+                        <span class="tag">Discord.js</span>
+                        <span class="tag">APIs</span>
+                        <span class="tag">Linux</span>
+                        <span class="tag">systemd</span>
+                    </div>
+                </article>
+            
+            
+                <!-- Home Lab -->
+                <article
+                    class="project-card reveal"
+                    data-category="infrastructure automation backend"
+                    style="--stagger: 160ms"
+                >
+                    <div class="project-image">
+                        <img
+                            src="assets/home-lab.webp"
+                            alt="Mustaqim's self-hosted home lab"
+                            loading="lazy"
+                            decoding="async"
+                        >
+                    </div>
+            
+                    <div class="project-top">
+                        <div class="project-icon" aria-hidden="true">
+                            <svg><use href="#icon-server"></use></svg>
+                        </div>
+                        <span class="status">Ongoing</span>
+                    </div>
+            
+                    <h3>My Home Lab</h3>
+            
+                    <p>
+                        Built and maintain a self-hosted Ubuntu environment for running
+                        Docker services, automation workflows, monitoring, remote
+                        development and experimental backend applications.
+                    </p>
+            
+                    <div class="tag-list">
+                        <span class="tag">Ubuntu Server</span>
+                        <span class="tag">Docker</span>
+                        <span class="tag">Tailscale</span>
+                        <span class="tag">Redis</span>
+                        <span class="tag">Cloudflare</span>
+                        <span class="tag">systemd</span>
+                    </div>
+                </article>
+            
+            
+                <!-- Newton Competition -->
+                <article
+                    class="project-card reveal"
+                    data-category="web competition"
+                    style="--stagger: 240ms"
+                >
+                    <div class="project-image">
+                        <img
+                            src="assets/newton-competition.webp"
+                            alt="Newton Competition project"
+                            loading="lazy"
+                            decoding="async"
+                        >
+                    </div>
+            
+                    <div class="project-top">
+                        <div class="project-icon" aria-hidden="true">
+                            <svg><use href="#icon-page"></use></svg>
+                        </div>
+                        <span class="status">Completed</span>
+                    </div>
+            
+                    <h3>Newton Competition Project</h3>
+            
+                    <p>
+                        A team competition project that shows how my school was shaped by
+                        Dr. Jabr's (the co-founder of my school). The project achieved
+                        second place.
+                    </p>
+            
+                    <div class="tag-list">
+                        <span class="tag">HTML</span>
+                        <span class="tag">CSS</span>
+                        <span class="tag">GameMaker</span>
+                        <span class="tag">itch.io</span>
+                    </div>
+            
+                    <div class="button-row">
+                        <a
+                            class="btn primary"
+                            href="https://amar-abdelhak-ayache.itch.io/newton-saga-drjabr-the-problems-he-faced"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            View Game
+                        </a>
+                    </div>
+                </article>
+            
+            
+                <!-- Short Video Pipeline -->
+                <article
+                    class="project-card reveal"
+                    data-category="automation media backend"
+                    style="--stagger: 320ms"
+                >
+                    <div class="project-image">
+                        <img
+                            src="assets/short-video-pipeline.webp"
+                            alt="Automated short-video generation pipeline"
+                            loading="lazy"
+                            decoding="async"
+                        >
+                    </div>
+            
+                    <div class="project-top">
+                        <div class="project-icon" aria-hidden="true">
+                            <svg><use href="#icon-video"></use></svg>
+                        </div>
+                        <span class="status">Development Project</span>
+                    </div>
+            
+                    <h3>Automated Short-Video Pipeline</h3>
+            
+                    <p>
+                        A workflow that generates narrated short videos using
+                        text-to-speech, subtitles, automated rendering, and media processing.
+                    </p>
+            
+                    <div class="tag-list">
+                        <span class="tag">n8n</span>
+                        <span class="tag">Python</span>
+                        <span class="tag">FastAPI</span>
+                        <span class="tag">Edge TTS</span>
+                        <span class="tag">FFmpeg</span>
+                    </div>
+                </article>
+            
+            </div>
       </div>
     </section>
 
