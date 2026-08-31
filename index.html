@@ -866,6 +866,28 @@
     .social-link:hover { transform: translateX(3px); border-color: var(--accent); background: var(--accent-haze); }
     .social-link span:last-child { color: var(--muted); font-size: .9rem; }
     .contact-form { display: grid; gap: 1rem; }
+    .contact-honeypot {
+        position: absolute !important;
+        left: -10000px !important;
+        top: auto !important;
+        width: 1px !important;
+        height: 1px !important;
+        overflow: hidden !important;
+    }
+    
+    .form-status[data-state="success"] {
+        color: hsl(140 55% 65%);
+    }
+    
+    .form-status[data-state="error"] {
+        color: hsl(8 90% 70%);
+    }
+    
+    .contact-form button:disabled {
+        opacity: .62;
+        cursor: wait;
+        pointer-events: none;
+    }
     .field { display: grid; gap: .42rem; }
     label { color: var(--ink-strong); font-weight: 850; }
     input, textarea { width: 100%; border: 1px solid var(--line); border-radius: var(--radius); background: hsl(0 12% 8%); color: var(--ink-strong); padding: .9rem; transition: border-color var(--fast), background var(--fast); }
@@ -1096,7 +1118,7 @@
           <path d="M10 38V10h7l7 12 7-12h7v28h-7V22l-7 12-7-12v16z" fill="var(--accent)"></path>
           <path d="M4 4h40v5H4z" fill="var(--accent-bright)"></path>
         </svg>
-        <span class="brand-name">Mustaqim</span>>
+        <span class="brand-name">Mustaqim</span>
       </a>
       <button class="menu-toggle" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="navLinks"><span></span><span></span><span></span></button>
       <div class="nav-links" id="navLinks">
@@ -1359,17 +1381,108 @@
 
     <section class="section alt section-track" id="contact" aria-labelledby="contact-title">
       <div class="container">
-        <div class="section-head reveal"><span class="label">Get in Touch</span><h2 id="contact-title">Let’s Talk.</h2><p class="lead">Have a project, collaboration, research idea, or opportunity in mind? Send me a message or connect through one of my profiles.</p><p>The form prepares an email and opens your default email application. No message is stored by this website.</p></div>
+        <div class="section-head reveal"><span class="label">Get in Touch</span><h2 id="contact-title">Let’s Talk.</h2><p class="lead">Have a project, collaboration, research idea, or opportunity in mind? Send me a message or connect through one of my profiles.</p><p>Send me a message directly through the website.</p></div>
         <div class="contact-grid">
           <aside class="contact-card reveal" aria-label="Contact profiles"><h3>Profiles</h3><div class="social-list"><a class="social-link" href="https://github.com/cnkqraw" target="_blank" rel="noopener noreferrer"><span>GitHub</span><span>cnkqraw</span></a><a class="social-link" href="https://instagram.com/_mztaq" target="_blank" rel="noopener noreferrer"><span>Instagram</span><span>_mztaq</span></a><a class="social-link" href="mailto:muhammadmustaqimchowdhury2010@gmail.com"><span>Email</span><span>Send message</span></a></div></aside>
-          <form class="contact-card contact-form reveal" id="contactForm" novalidate><div class="field"><label for="name">Name</label><input id="name" name="name" type="text" autocomplete="name" required aria-describedby="name-error"><span class="error" id="name-error" aria-live="polite"></span></div><div class="field"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" required aria-describedby="email-error"><span class="error" id="email-error" aria-live="polite"></span></div><div class="field"><label for="message">Message</label><textarea id="message" name="message" required minlength="10" aria-describedby="message-error"></textarea><span class="error" id="message-error" aria-live="polite"></span></div><p class="form-status" id="formStatus" role="status" aria-live="polite"></p><button class="btn primary" type="submit">Prepare Email</button></form>
+          <form
+              class="contact-card contact-form reveal"
+              id="contactForm"
+              novalidate
+          >
+              <div class="field">
+                  <label for="name">Name</label>
+        
+                  <input
+                      id="name"
+                      name="name"
+                      type="text"
+                      autocomplete="name"
+                      maxlength="80"
+                      required
+                      aria-describedby="name-error"
+                  >
+        
+                  <span
+                      class="error"
+                      id="name-error"
+                      aria-live="polite"
+                  ></span>
+              </div>
+        
+              <div class="field">
+                  <label for="email">Email</label>
+        
+                  <input
+                      id="email"
+                      name="email"
+                      type="email"
+                      autocomplete="email"
+                      maxlength="254"
+                      required
+                      aria-describedby="email-error"
+                  >
+        
+                  <span
+                      class="error"
+                      id="email-error"
+                      aria-live="polite"
+                  ></span>
+              </div>
+        
+              <div class="field">
+                  <label for="message">Message</label>
+        
+                  <textarea
+                      id="message"
+                      name="message"
+                      required
+                      minlength="10"
+                      maxlength="5000"
+                      aria-describedby="message-error"
+                  ></textarea>
+        
+                  <span
+                      class="error"
+                      id="message-error"
+                      aria-live="polite"
+                  ></span>
+              </div>
+        
+              <!-- Spam honeypot -->
+              <div class="contact-honeypot" aria-hidden="true">
+                  <label for="website">Website</label>
+        
+                  <input
+                      id="website"
+                      name="website"
+                      type="text"
+                      tabindex="-1"
+                      autocomplete="off"
+                  >
+              </div>
+        
+              <p
+                  class="form-status"
+                  id="formStatus"
+                  role="status"
+                  aria-live="polite"
+              ></p>
+        
+              <button
+                  class="btn primary"
+                  id="contactSubmit"
+                  type="submit"
+              >
+                  Send Message
+              </button>
+          </form>
         </div>
       </div>
     </section>
   </main>
   <footer class="site-footer">
       <div class="footer-inner">
-          <span>© <span id="year"></span>All rights reserved, Muhammad Mustaqim Chowdhury</span>
+          <span>© <span id="year"></span> All rights reserved, Muhammad Mustaqim Chowdhury</span>
       </div>
   </footer>
   <button class="back-to-top" id="backToTop" type="button" aria-label="Back to top">↑</button>
@@ -1377,8 +1490,6 @@
   <script>
     (() => {
       'use strict';
-
-      const contactEmail = 'muhammadmustaqimchowdhury2010@gmail.com';
       const header = document.getElementById('siteHeader');
       const progress = document.querySelector('.progress-bar');
       const routeFill = document.querySelector('.scroll-route-fill');
@@ -1700,44 +1811,181 @@
         });
       };
 
-      const setupContactForm = () => {
-        const form = document.getElementById('contactForm');
-        if (!form) return;
-        const status = document.getElementById('formStatus');
-        const fields = { name: document.getElementById('name'), email: document.getElementById('email'), message: document.getElementById('message') };
-        const setError = (field, message) => {
-          field.setAttribute('aria-invalid', message ? 'true' : 'false');
-          const target = document.getElementById(`${field.id}-error`);
-          if (target) target.textContent = message;
+        const setupContactForm = () => {
+          const form = document.getElementById('contactForm');
+        
+          if (!form) return;
+        
+          const status = document.getElementById('formStatus');
+          const submitButton = document.getElementById('contactSubmit');
+        
+          const fields = {
+            name: document.getElementById('name'),
+            email: document.getElementById('email'),
+            message: document.getElementById('message'),
+            website: document.getElementById('website')
+          };
+        
+          const setError = (field, message) => {
+            field.setAttribute(
+              'aria-invalid',
+              message ? 'true' : 'false'
+            );
+        
+            const target = document.getElementById(
+              `${field.id}-error`
+            );
+        
+            if (target) {
+              target.textContent = message;
+            }
+          };
+        
+          const validate = () => {
+            let valid = true;
+        
+            const name = fields.name.value.trim();
+            const email = fields.email.value.trim();
+            const message = fields.message.value.trim();
+        
+            if (!name) {
+              setError(
+                fields.name,
+                'Please enter your name.'
+              );
+        
+              valid = false;
+            } else {
+              setError(fields.name, '');
+            }
+        
+            if (!email) {
+              setError(
+                fields.email,
+                'Please enter your email address.'
+              );
+        
+              valid = false;
+        
+            } else if (
+              !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
+            ) {
+              setError(
+                fields.email,
+                'Please enter a valid email address.'
+              );
+        
+              valid = false;
+        
+            } else {
+              setError(fields.email, '');
+            }
+        
+            if (!message) {
+              setError(
+                fields.message,
+                'Please enter a message.'
+              );
+        
+              valid = false;
+        
+            } else if (message.length < 10) {
+              setError(
+                fields.message,
+                'Your message must contain at least ten characters.'
+              );
+        
+              valid = false;
+        
+            } else {
+              setError(fields.message, '');
+            }
+        
+            return valid;
+          };
+        
+          [fields.name, fields.email, fields.message]
+            .forEach((field) => {
+        
+              field.addEventListener('input', () => {
+                validate();
+        
+                status.textContent = '';
+                status.removeAttribute('data-state');
+              });
+        
+            });
+        
+          form.addEventListener('submit', async (event) => {
+            event.preventDefault();
+        
+            if (!validate()) {
+              status.textContent =
+                'Please fix the highlighted fields.';
+        
+              status.dataset.state = 'error';
+              return;
+            }
+        
+            submitButton.disabled = true;
+            submitButton.textContent = 'Sending...';
+        
+            status.textContent = 'Sending your message...';
+            status.removeAttribute('data-state');
+        
+            try {
+              const response = await fetch('/api/contact', {
+                method: 'POST',
+        
+                headers: {
+                  'Content-Type': 'application/json'
+                },
+        
+                body: JSON.stringify({
+                  name: fields.name.value.trim(),
+                  email: fields.email.value.trim(),
+                  message: fields.message.value.trim(),
+                  website: fields.website.value.trim()
+                })
+              });
+        
+              const result = await response.json();
+        
+              if (!response.ok || !result.ok) {
+                throw new Error(
+                  result.error || 'Message could not be sent.'
+                );
+              }
+        
+              status.textContent =
+                'Message sent successfully. I’ll get back to you as soon as I can.';
+        
+              status.dataset.state = 'success';
+        
+              form.reset();
+        
+              [fields.name, fields.email, fields.message]
+                .forEach((field) => {
+                  field.setAttribute(
+                    'aria-invalid',
+                    'false'
+                  );
+                });
+        
+            } catch (error) {
+              console.error(error);
+        
+              status.textContent =
+                'Could not send your message. Please try again or use the email link.';
+        
+              status.dataset.state = 'error';
+        
+            } finally {
+              submitButton.disabled = false;
+              submitButton.textContent = 'Send Message';
+            }
+          });
         };
-        const validate = () => {
-          let valid = true;
-          const name = fields.name.value.trim();
-          const email = fields.email.value.trim();
-          const message = fields.message.value.trim();
-          if (!name) { setError(fields.name, 'Please enter your name.'); valid = false; } else setError(fields.name, '');
-          if (!email) { setError(fields.email, 'Please enter your email address.'); valid = false; }
-          else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { setError(fields.email, 'Please enter a valid email address.'); valid = false; }
-          else setError(fields.email, '');
-          if (!message) { setError(fields.message, 'Please enter a message.'); valid = false; }
-          else if (message.length < 10) { setError(fields.message, 'Your message must contain at least ten characters.'); valid = false; }
-          else setError(fields.message, '');
-          return valid;
-        };
-        Object.values(fields).forEach((field) => field.addEventListener('input', () => { validate(); status.textContent = ''; }));
-        form.addEventListener('submit', (event) => {
-          event.preventDefault();
-          if (!validate()) { status.textContent = 'Please fix the highlighted fields.'; return; }
-          const name = fields.name.value.trim();
-          const email = fields.email.value.trim();
-          const message = fields.message.value.trim();
-          const subject = encodeURIComponent(`Portfolio Contact from ${name}`);
-          const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`);
-          status.textContent = 'Opening your default email application...';
-          window.setTimeout(() => { window.location.href = `mailto:${contactEmail}?subject=${subject}&body=${body}`; }, 350);
-        });
-      };
-
       const boot = () => {
         setYear();
         updateScrollChrome();
