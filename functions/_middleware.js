@@ -2,9 +2,13 @@ export async function onRequest(context) {
   const request = context.request;
   const url = new URL(request.url);
 
+  const isSocialPreview =
+    url.pathname === "/assets/social-preview.png";
+  
   const isProtectedImage =
     url.pathname.startsWith("/assets/") &&
-    /\.(png|jpg|jpeg|webp|gif|avif|svg)$/i.test(url.pathname);
+    /\.(png|jpg|jpeg|webp|gif|avif|svg)$/i.test(url.pathname) &&
+    !isSocialPreview;
 
   if (isProtectedImage) {
     const destination = request.headers.get("Sec-Fetch-Dest");
