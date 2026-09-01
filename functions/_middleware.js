@@ -3,7 +3,7 @@ export async function onRequest(context) {
   const url = new URL(request.url);
 
   const isSocialPreview =
-    url.pathname === "/assets/social-preview.png";
+    url.pathname === "/assets/social-preview.jpg";
   
   const isProtectedImage =
     url.pathname.startsWith("/assets/") &&
