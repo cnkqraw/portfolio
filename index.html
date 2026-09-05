@@ -319,6 +319,15 @@
                         <span class="tag">Linux</span>
                         <span class="tag">systemd</span>
                     </div>
+                    <div class="button-row">
+                        <button
+                            class="btn primary project-details-button"
+                            type="button"
+                            data-project="quantumgpt"
+                        >
+                            View Details
+                        </button>
+                    </div>                    
                 </article>
             
             
@@ -360,6 +369,15 @@
                         <span class="tag">Cloudflare</span>
                         <span class="tag">systemd</span>
                     </div>
+                    <div class="button-row">
+                        <button
+                            class="btn primary project-details-button"
+                            type="button"
+                            data-project="home-lab"
+                        >
+                            View Details
+                        </button>
+                    </div>
                 </article>
             
             
@@ -399,10 +417,17 @@
                         <span class="tag">GameMaker</span>
                         <span class="tag">itch.io</span>
                     </div>
-            
                     <div class="button-row">
+                        <button
+                            class="btn primary project-details-button"
+                            type="button"
+                            data-project="newton"
+                        >
+                            View Details
+                        </button>
+                    
                         <a
-                            class="btn primary"
+                            class="btn"
                             href="https://amar-abdelhak-ayache.itch.io/newton-saga-drjabr-the-problems-he-faced"
                             target="_blank"
                             rel="noopener noreferrer"
@@ -449,12 +474,84 @@
                         <span class="tag">Edge TTS</span>
                         <span class="tag">FFmpeg</span>
                     </div>
+                    <div class="button-row">
+                        <button
+                            class="btn primary project-details-button"
+                            type="button"
+                            data-project="short-video"
+                        >
+                            View Details
+                        </button>
+                    </div>
                 </article>
-            
             </div>
       </div>
     </section>
-
+    <div
+        class="project-modal"
+        id="projectModal"
+        hidden
+        aria-hidden="true"
+    >
+        <div
+            class="project-modal-dialog"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="projectModalTitle"
+            tabindex="-1"
+        >
+            <button
+                class="project-modal-close"
+                type="button"
+                aria-label="Close project details"
+                data-project-close
+            >
+                ×
+            </button>
+    
+            <div class="project-modal-content">
+    
+                <span class="project-modal-label">
+                    Project Case Study
+                </span>
+    
+                <h2 id="projectModalTitle"></h2>
+    
+                <p
+                    class="project-modal-intro"
+                    id="projectModalIntro"
+                ></p>
+    
+                <img
+                    class="project-modal-image"
+                    id="projectModalImage"
+                    src=""
+                    alt=""
+                >
+    
+                <div
+                    class="project-modal-tags"
+                    id="projectModalTags"
+                ></div>
+    
+                <div
+                    class="project-modal-body"
+                    id="projectModalBody"
+                ></div>
+    
+                <div class="project-modal-footer">
+                    <button
+                        class="btn primary"
+                        type="button"
+                        data-project-close
+                    >
+                        ← Back to Projects
+                    </button>
+                </div>
+    
+            </div>
+        </div>
+    </div>
     <section class="section certificates-section section-track" id="certificates" aria-labelledby="certificates-title">
       <div class="container">
         <div class="section-head reveal"><span class="label">Certificates</span><h2 id="certificates-title">Learning and qualifications</h2><p class="lead">Certificates and credentials earned through technical courses, assessments, and training programmes.</p></div>
@@ -466,7 +563,6 @@
         </div>
       </div>
     </section>
-
     <section class="section alt section-track" id="contact" aria-labelledby="contact-title">
       <div class="container">
         <div class="section-head reveal"><span class="label">Get in Touch</span><h2 id="contact-title">Let’s Talk.</h2><p class="lead">Have a project, collaboration, research idea, or opportunity in mind? Send me a message or connect through one of my profiles.</p></div>
