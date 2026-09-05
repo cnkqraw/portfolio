@@ -223,9 +223,8 @@ Certificate PDFs and optimized preview images are stored in the `certificates/` 
 ## Contact
 
 - **Portfolio:** [mustaqim.is-a.dev](https://mustaqim.is-a.dev)
-- **GitHub:** [github.com/cnkqraw](https://github.com/cnkqraw)
+- **GitHub:** [github.com/mztaq](https://github.com/mztaq)
 - **LinkedIn:** [Muhammad Mustaqim Chowdhury](https://www.linkedin.com/in/muhammad-mustaqim-chowdhury/)
-- **Instagram:** [@_mztaq](https://instagram.com/_mztaq)
 
 ---
 
