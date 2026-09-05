@@ -1,0 +1,4 @@
+Contact: https://mustaqim.is-a.dev/#contact
+Expires: 2027-03-05T00:00:00Z
+Preferred-Languages: en
+Canonical: https://mustaqim.is-a.dev/.well-known/security.txt
