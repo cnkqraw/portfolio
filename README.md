@@ -228,4 +228,14 @@ Certificate PDFs and optimized preview images are stored in the `certificates/` 
 
 ---
 
+## License
+
+Copyright © 2026 Muhammad Mustaqim Chowdhury.
+
+This repository is **not open source**. The source code, design, branding, and assets may be viewed for reference and evaluation purposes, but may not be copied, redistributed, modified, or used to create derivative websites without permission.
+
+See [`LICENSE`](LICENSE) for details.
+
+---
+
 Built and maintained by **Muhammad Mustaqim Chowdhury**.
