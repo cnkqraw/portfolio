@@ -320,7 +320,517 @@
           });
         });
       };
-
+        const projectDetails = {
+          quantumgpt: {
+            title: 'QuantumGPT',
+        
+            intro:
+              'An AI-powered Discord bot that connects Discord conversations to external language-model providers and runs continuously on Linux.',
+        
+            image: 'assets/quantumgpt.webp',
+        
+            imageAlt: 'QuantumGPT Discord bot project',
+        
+            tags: [
+              'JavaScript',
+              'Discord.js',
+              'REST APIs',
+              'Linux',
+              'systemd'
+            ],
+        
+            content: `
+              <section>
+                <h3>Overview</h3>
+        
+                <p>
+                  QuantumGPT is an AI-integrated Discord bot designed to
+                  provide language-model responses directly inside Discord.
+                </p>
+              </section>
+        
+              <section>
+                <h3>The Problem</h3>
+        
+                <p>
+                  I wanted an AI assistant that could be used directly
+                  inside a Discord server without users needing to leave
+                  Discord or open a separate application.
+                </p>
+              </section>
+        
+              <section>
+                <h3>What I Built</h3>
+        
+                <p>
+                  I built the bot using JavaScript and Discord.js. It listens
+                  for mentions, processes the user's message, communicates
+                  with an external language-model provider, and sends the
+                  generated response back into Discord.
+                </p>
+              </section>
+        
+              <section>
+                <h3>How It Works</h3>
+        
+                <p>
+                  Discord user → Discord.js bot → message processing →
+                  external AI API → response processing → Discord reply.
+                </p>
+              </section>
+        
+              <section>
+                <h3>Key Features</h3>
+        
+                <ul>
+                  <li>Mention-based activation</li>
+                  <li>External language-model API integration</li>
+                  <li>Continuous Linux hosting</li>
+                  <li>systemd service management</li>
+                  <li>Automatic service restarting</li>
+                </ul>
+              </section>
+        
+              <section>
+                <h3>What I Learned</h3>
+        
+                <p>
+                  Building QuantumGPT gave me more practical experience with
+                  APIs, asynchronous JavaScript, Discord bot development,
+                  Linux services, deployment and troubleshooting.
+                </p>
+              </section>
+            `
+          },
+        
+        
+          'home-lab': {
+            title: 'My Home Lab',
+        
+            intro:
+              'A self-hosted Ubuntu Server environment used for running Docker services, automation workflows, monitoring and backend experiments.',
+        
+            image: 'assets/home-lab.webp',
+        
+            imageAlt: "Mustaqim's self-hosted home lab",
+        
+            tags: [
+              'Ubuntu Server',
+              'Docker',
+              'Tailscale',
+              'Redis',
+              'Cloudflare',
+              'systemd'
+            ],
+        
+            content: `
+              <section>
+                <h3>Overview</h3>
+        
+                <p>
+                  My home lab is a persistent Linux environment that I use
+                  for hosting services, automation workflows, monitoring,
+                  development and backend experiments.
+                </p>
+              </section>
+        
+              <section>
+                <h3>The Problem</h3>
+        
+                <p>
+                  I wanted a persistent environment where I could run
+                  applications and automation workflows without depending
+                  on my laptop remaining powered on.
+                </p>
+              </section>
+        
+              <section>
+                <h3>What I Built</h3>
+        
+                <p>
+                  I configured an Ubuntu Server system for running
+                  containerized applications and native Linux services.
+                  It hosts Docker workloads, automation services, monitoring
+                  tools and experimental backend applications.
+                </p>
+              </section>
+        
+              <section>
+                <h3>Infrastructure</h3>
+        
+                <p>
+                  Docker provides isolated services, Tailscale provides
+                  secure remote access, Redis is available for application
+                  state and caching, and systemd manages native background
+                  services.
+                </p>
+              </section>
+        
+              <section>
+                <h3>Technical Challenges</h3>
+        
+                <ul>
+                  <li>Configuring networking and service ports</li>
+                  <li>Troubleshooting Docker containers</li>
+                  <li>Managing persistent background services</li>
+                  <li>Setting up secure remote access</li>
+                  <li>Monitoring CPU, memory and storage usage</li>
+                  <li>Recovering services after failures</li>
+                </ul>
+              </section>
+        
+              <section>
+                <h3>What I Learned</h3>
+        
+                <p>
+                  Maintaining the server has given me practical experience
+                  with Linux administration, Docker, networking, logs,
+                  systemd, remote access and troubleshooting real running
+                  services.
+                </p>
+              </section>
+            `
+          },
+        
+        
+          newton: {
+            title: 'Dr. Jabr Newton Odyssey Project',
+        
+            intro:
+              'A team competition project combining web development and game development that achieved second place.',
+        
+            image: 'assets/newton-competition.webp',
+        
+            imageAlt: 'Dr. Jabr Newton Odyssey competition project',
+        
+            tags: [
+              'HTML',
+              'CSS',
+              'GameMaker',
+              'itch.io'
+            ],
+        
+            content: `
+              <section>
+                <h3>Overview</h3>
+        
+                <p>
+                  This project was created with a teammate for an
+                  Inter-Newton school competition.
+                </p>
+              </section>
+        
+              <section>
+                <h3>The Goal</h3>
+        
+                <p>
+                  Our goal was to create an interactive project presenting
+                  the story of Dr. Jabr, the development of the school and
+                  some of the challenges involved in that journey.
+                </p>
+              </section>
+        
+              <section>
+                <h3>What We Built</h3>
+        
+                <p>
+                  The project combined a web experience with an interactive
+                  game created using GameMaker and published through itch.io.
+                </p>
+              </section>
+        
+              <section>
+                <h3>Result</h3>
+        
+                <p>
+                  The project achieved <strong>second place</strong> in the
+                  competition.
+                </p>
+              </section>
+        
+              <section>
+                <h3>What I Learned</h3>
+        
+                <p>
+                  The project gave me experience with teamwork, combining
+                  multiple technologies, planning around a deadline,
+                  presenting technical work and improving a project based
+                  on feedback.
+                </p>
+              </section>
+            `
+          },
+        
+        
+          'short-video': {
+            title: 'Automated Short-Video Pipeline',
+        
+            intro:
+              'An automated workflow that turns text into narrated short-form videos using text-to-speech, subtitles and FFmpeg rendering.',
+        
+            image: 'assets/short-video-pipeline.webp',
+        
+            imageAlt: 'Automated short-video generation pipeline',
+        
+            tags: [
+              'n8n',
+              'Python',
+              'FastAPI',
+              'Edge TTS',
+              'FFmpeg'
+            ],
+        
+            content: `
+              <section>
+                <h3>Overview</h3>
+        
+                <p>
+                  This project explores automating the process of turning
+                  text into finished short-form video content.
+                </p>
+              </section>
+        
+              <section>
+                <h3>The Problem</h3>
+        
+                <p>
+                  Producing short videos manually involves repetitive steps
+                  such as narration generation, subtitle creation, timing,
+                  media processing and rendering.
+                </p>
+              </section>
+        
+              <section>
+                <h3>What I Built</h3>
+        
+                <p>
+                  I built an n8n workflow connected to a Python and FastAPI
+                  rendering service. Narration is generated with Edge TTS,
+                  while FFmpeg handles the final media processing and render.
+                </p>
+              </section>
+        
+              <section>
+                <h3>Pipeline</h3>
+        
+                <p>
+                  Text → n8n workflow → text-to-speech → subtitle generation
+                  → media processing → FFmpeg → final video.
+                </p>
+              </section>
+        
+              <section>
+                <h3>Technical Challenges</h3>
+        
+                <ul>
+                  <li>Synchronising narration and subtitles</li>
+                  <li>Automating FFmpeg commands</li>
+                  <li>Passing media files between services</li>
+                  <li>Handling failed workflow executions</li>
+                  <li>Improving pacing and output quality</li>
+                </ul>
+              </section>
+        
+              <section>
+                <h3>What I Learned</h3>
+        
+                <p>
+                  The project has helped me learn more about workflow
+                  automation, APIs, FastAPI, media processing and connecting
+                  multiple independent tools into one system.
+                </p>
+              </section>
+            `
+          }
+        };
+        
+        
+        const setupProjectModal = () => {
+          const modal = document.getElementById('projectModal');
+        
+          if (!modal) return;
+        
+          const dialog =
+            modal.querySelector('.project-modal-dialog');
+        
+          const title =
+            document.getElementById('projectModalTitle');
+        
+          const intro =
+            document.getElementById('projectModalIntro');
+        
+          const image =
+            document.getElementById('projectModalImage');
+        
+          const tags =
+            document.getElementById('projectModalTags');
+        
+          const body =
+            document.getElementById('projectModalBody');
+        
+          const detailButtons =
+            Array.from(
+              document.querySelectorAll(
+                '.project-details-button'
+              )
+            );
+        
+          const closeButtons =
+            Array.from(
+              modal.querySelectorAll(
+                '[data-project-close]'
+              )
+            );
+        
+          let lastTrigger = null;
+          let closingTimer = null;
+        
+        
+          const openModal = (projectKey, trigger) => {
+            const project = projectDetails[projectKey];
+        
+            if (!project) return;
+        
+            if (closingTimer) {
+              clearTimeout(closingTimer);
+              closingTimer = null;
+            }
+        
+            lastTrigger = trigger;
+        
+            title.textContent =
+              project.title;
+        
+            intro.textContent =
+              project.intro;
+        
+            image.src =
+              project.image;
+        
+            image.alt =
+              project.imageAlt;
+        
+            tags.innerHTML =
+              project.tags
+                .map(
+                  tag =>
+                    `<span class="tag">${tag}</span>`
+                )
+                .join('');
+        
+            body.innerHTML =
+              project.content;
+        
+            closeMenu();
+        
+            modal.hidden = false;
+        
+            modal.setAttribute(
+              'aria-hidden',
+              'false'
+            );
+        
+            document.body.classList.add(
+              'project-modal-open'
+            );
+        
+            dialog.scrollTop = 0;
+        
+            requestAnimationFrame(() => {
+              modal.classList.add('is-open');
+        
+              requestAnimationFrame(() => {
+                dialog.focus();
+              });
+            });
+          };
+        
+        
+          const closeModal = () => {
+            if (
+              modal.hidden ||
+              !modal.classList.contains('is-open')
+            ) {
+              return;
+            }
+        
+            modal.classList.remove('is-open');
+        
+            modal.setAttribute(
+              'aria-hidden',
+              'true'
+            );
+        
+            document.body.classList.remove(
+              'project-modal-open'
+            );
+        
+            const finishClosing = () => {
+              modal.hidden = true;
+        
+              if (lastTrigger) {
+                lastTrigger.focus();
+              }
+            };
+        
+            if (reducedMotionQuery.matches) {
+              finishClosing();
+              return;
+            }
+        
+            closingTimer =
+              window.setTimeout(
+                finishClosing,
+                280
+              );
+          };
+        
+        
+          detailButtons.forEach(button => {
+            button.addEventListener(
+              'click',
+              () => {
+                openModal(
+                  button.dataset.project,
+                  button
+                );
+              }
+            );
+          });
+        
+        
+          closeButtons.forEach(button => {
+            button.addEventListener(
+              'click',
+              closeModal
+            );
+          });
+        
+        
+          modal.addEventListener(
+            'click',
+            event => {
+              if (event.target === modal) {
+                closeModal();
+              }
+            }
+          );
+        
+        
+          document.addEventListener(
+            'keydown',
+            event => {
+              if (
+                event.key === 'Escape' &&
+                !modal.hidden
+              ) {
+                event.preventDefault();
+        
+                closeModal();
+              }
+            }
+          );
+        };
         const setupContactForm = () => {
           const form = document.getElementById('contactForm');
         
@@ -521,6 +1031,7 @@
         setupProjectFilters();
         setupPortraitMotion();
         setupProjectCardInteractions();
+        setupProjectModal();
         setupMagneticButtons();
         setupContactForm();
         requestScrollUpdate();
